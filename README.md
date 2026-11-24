@@ -1,9 +1,8 @@
-# Nexovetra-Cafe-Website
-A modern, elegant, and responsive café website built for Nexovetra, featuring an immersive coffee experience, menu exploration, café storytelling, and a welcoming digital space for coffee lovers.
-
 # ☕ Nexovetra — Coffee & Café Website
 
 > A digital experience crafted around coffee, comfort, creativity, and connection.
+
+🌐 **Live Website:** [Visit Nexovetra Café](https://nexovetra-cafe.onrender.com/)
 
 Nexovetra is a café website concept designed to bring the warmth and atmosphere of a modern coffee shop into the digital world. The website combines elegant design, a welcoming visual identity, and intuitive navigation to create a smooth experience for visitors.
 
