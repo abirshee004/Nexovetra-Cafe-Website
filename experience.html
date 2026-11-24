@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5efe4" />
+    <meta name="description" content="Meet Abir and the story, values, coffee, and community behind Nexovetra Café." />
+    <title>Our Experience — The Story of Nexovetra</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; min-width: 320px; overflow-x: hidden; }
+      .nav-link { position: relative; }
+      .nav-link::after { position: absolute; right: 0; bottom: -.3rem; left: 0; height: 1px; content: ""; background: #b65b34; transform: scaleX(0); transform-origin: left; transition: transform 220ms ease; }
+      .nav-link:hover::after, .nav-link:focus-visible::after { transform: scaleX(1); }
+      .portrait-frame { isolation: isolate; }
+      .portrait-frame img, .gallery-photo img, .ambience-photo img { transition: transform 800ms cubic-bezier(.2,.7,.2,1), filter 600ms ease; }
+      .portrait-frame:hover img, .gallery-photo:hover img, .ambience-photo:hover img { transform: scale(1.045); filter: saturate(1.08); }
+      .photo-shade { background: linear-gradient(180deg, transparent 50%, rgba(23,37,29,.64) 100%); }
+      .gallery-mosaic { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+      .gallery-mosaic .gallery-photo { position: relative; min-width: 0; aspect-ratio: 4 / 3; border: 0; padding: 0; }
+      .gallery-mosaic .gallery-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+      @media (min-width: 640px) {
+        .gallery-mosaic { grid-template-columns: minmax(0, 1.65fr) repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, clamp(220px, 18vw, 300px)); gap: 1rem; }
+        .gallery-mosaic .gallery-photo:first-child { grid-row: span 2; aspect-ratio: auto; }
+      }
+      .value-card, .experience-card { transition: transform 300ms cubic-bezier(.2,.8,.2,1), box-shadow 300ms ease, border-color 300ms ease; }
+      .value-card:hover, .experience-card:hover { transform: translateY(-5px); border-color: rgba(182,91,52,.35); box-shadow: 0 18px 32px rgba(80,55,32,.1); }
+      .story-section { position: relative; isolation: isolate; overflow: hidden; background: #23392f; }
+      .story-section::before, .story-section::after { position: absolute; z-index: -1; width: 28rem; height: 28rem; border-radius: 9999px; content: ""; pointer-events: none; filter: blur(85px); opacity: .1; }
+      .story-section::before { top: -13rem; left: -10rem; background: #e3aa71; }
+      .story-section::after { right: -12rem; bottom: -16rem; background: #7f9c72; }
+      .story-note { position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,.2); border-radius: 1.75rem; background: linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.04)); box-shadow: 0 24px 50px rgba(10,24,17,.22); backdrop-filter: blur(8px); }
+      .story-note::after { position: absolute; right: -2.7rem; bottom: -3.5rem; width: 12rem; height: 12rem; border: 1px solid rgba(255,248,232,.12); border-radius: 50%; content: ""; pointer-events: none; box-shadow: 0 0 0 1.5rem rgba(255,248,232,.035), 0 0 0 3rem rgba(255,248,232,.025); }
+      .story-sticker { display: inline-flex; align-items: center; gap: .55rem; border: 1px solid rgba(60,76,58,.1); border-radius: 1rem; background: #fff4da; padding: .7rem .9rem; color: #355646; box-shadow: 0 10px 20px rgba(9,22,15,.2); font-size: .7rem; font-weight: 700; letter-spacing: .04em; transform: rotate(-3deg); animation: sticker-drift 5.5s ease-in-out infinite; transition: transform 260ms ease, box-shadow 260ms ease; }
+      .story-sticker-alt { background: #f4d9c8; color: #803f2d; animation-delay: -2.2s; transform: rotate(3deg); }
+      .story-sticker:hover { animation-play-state: paused; transform: translateY(-4px) rotate(0deg) scale(1.03); box-shadow: 0 14px 24px rgba(9,22,15,.26); }
+      .story-timeline { position: relative; display: grid; gap: 1rem; }
+      .story-timeline::before { position: absolute; top: 1.15rem; bottom: 1.15rem; left: 1.2rem; width: 1px; content: ""; background: linear-gradient(180deg,rgba(221,182,140,.2),rgba(221,182,140,.85),rgba(221,182,140,.2)); }
+      .story-chapter { position: relative; display: grid; grid-template-columns: 2.5rem minmax(0,1fr); align-items: start; gap: .8rem; }
+      .story-node { position: relative; z-index: 1; display: grid; width: 2.45rem; height: 2.45rem; place-items: center; border: 1px solid rgba(221,182,140,.45); border-radius: 50%; background: #294438; color: #ddb68c; font-family: Georgia,serif; font-size: .9rem; transition: color 350ms ease, background-color 350ms ease, box-shadow 350ms ease, transform 350ms cubic-bezier(.2,.8,.2,1); }
+      .story-chapter.is-visible .story-node { transform: scale(1.08); border-color: #f0c99d; background: #f0c99d; color: #23392f; box-shadow: 0 0 0 6px rgba(240,201,157,.11), 0 0 22px rgba(240,201,157,.35); }
+      .story-chapter-card { border: 1px solid rgba(255,255,255,.11); border-radius: 1.2rem; background: rgba(255,255,255,.055); padding: 1rem 1.1rem; transition: transform 300ms cubic-bezier(.2,.8,.2,1), border-color 300ms ease, background-color 300ms ease, box-shadow 300ms ease; }
+      .story-chapter-card:hover { transform: translateX(5px); border-color: rgba(221,182,140,.4); background: rgba(255,255,255,.09); box-shadow: 0 14px 24px rgba(10,24,17,.15); }
+      .story-chapter-card h3 { transition: color 240ms ease; }
+      .story-chapter-card:hover h3 { color: #f0c99d; }
+      .js-motion .story-chapter { opacity: 0; transform: translateX(20px); transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.8,.2,1); transition-delay: var(--chapter-delay,0ms); }
+      .js-motion .story-chapter.is-visible { opacity: 1; transform: translateX(0); }
+      @keyframes sticker-drift { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
+      .js-motion .reveal { opacity: 0; transform: translateY(22px); transition: opacity 700ms cubic-bezier(.2,.8,.2,1), transform 700ms cubic-bezier(.2,.8,.2,1); }
+      .js-motion .reveal.is-visible { opacity: 1; transform: translateY(0); }
+      .gallery-photo:nth-child(2), .gallery-photo:nth-child(5) { transition-delay: 80ms; }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+        .js-motion .reveal { opacity: 1; transform: none; }
+        .js-motion .story-chapter { opacity: 1; transform: none; }
+        .story-sticker { animation: none; }
+      }
+    </style>
+      <link rel="stylesheet" href="interactions.css" />
+  </head>
+  <body class="bg-[#f5efe4] text-[#23392f] antialiased selection:bg-amber-200 selection:text-[#23392f]">
+    <header class="relative z-20 border-b border-[#23392f]/10 bg-[#f5efe4]/95">
+      <nav aria-label="Main navigation" class="mx-auto flex w-full max-w-7xl items-center justify-between gap-1 px-3 py-4 sm:gap-4 sm:px-8 lg:px-12">
+        <a href="home.html" class="flex shrink-0 items-center gap-1.5 sm:gap-2.5" aria-label="Nexovetra home">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#234438] text-[#f5efe4] sm:h-10 sm:w-10"><svg aria-hidden="true" viewBox="0 0 32 32" class="h-6 w-6" fill="none"><path d="M7 12h18l-1.7 13H8.7L7 12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 9c0-2 2-2 2-4M16 9c0-2 2-2 2-4M22 9c0-2 2-2 2-4M25 15h2.2a3.8 3.8 0 0 1 0 7.6h-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="font-serif text-base font-semibold tracking-tight sm:text-2xl">Nexovetra</span>
+        </a>
+        <div class="flex shrink-0 items-center gap-1 text-[11px] font-medium sm:gap-6 sm:text-sm">
+          <a href="home.html" class="nav-link text-[#23392f]/75 transition hover:text-[#b65b34]">Home</a>
+          <a href="menu.html" class="nav-link text-[#23392f]/75 transition hover:text-[#b65b34]">Menu</a>
+          <a href="experience.html" aria-current="page" class="font-semibold text-[#a44d2c]"><span class="sm:hidden">Story</span><span class="hidden sm:inline">Our Experience</span></a>
+          <a href="order-reservations.html" class="nav-link text-[#23392f]/75 transition hover:text-[#b65b34]"><span class="sm:hidden">Order</span><span class="hidden sm:inline">Order &amp; Book</span></a>
+          <a href="visitus.html" class="inline-flex items-center gap-0.5 rounded-full bg-[#234438] px-2 py-2.5 text-[11px] font-semibold text-white transition hover:bg-[#345a49] sm:gap-2 sm:px-5 sm:text-sm"><span class="sm:hidden">Visit</span><span class="hidden sm:inline">Visit us</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="relative overflow-hidden">
+        <div aria-hidden="true" class="pointer-events-none absolute -left-28 top-20 h-72 w-72 rounded-full bg-[#d3a66a]/20 blur-3xl"></div>
+        <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1.08fr_.92fr] lg:gap-16 lg:px-12 lg:py-20">
+          <div class="reveal" data-reveal>
+            <p class="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[.28em] text-[#a45a37] sm:text-xs"><span class="h-px w-7 bg-[#a45a37]"></span> The heart behind Nexovetra</p>
+            <h1 class="mt-5 max-w-3xl font-serif text-5xl leading-[1.02] tracking-[-.04em] sm:text-7xl">A small beginning.<br /><span class="italic text-[#b65b34]">A dream with room</span><br />for everyone.</h1>
+            <p class="mt-6 max-w-xl text-base leading-7 text-[#536258] sm:text-lg sm:leading-8">Not just a place to grab coffee. A place to slow down, feel welcome, and make a beautiful moment of an ordinary day.</p>
+            <div class="mt-8 flex flex-wrap gap-3"><a href="#story" class="group inline-flex items-center gap-3 rounded-full bg-[#234438] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#345a49]">Read our story <span class="transition-transform group-hover:translate-y-1">↓</span></a><a href="menu.html" class="inline-flex items-center gap-2 rounded-full border border-[#23392f]/20 px-5 py-3 text-sm font-semibold text-[#23392f] transition hover:-translate-y-1 hover:border-[#b65b34] hover:text-[#a44d2c]">Explore the menu ↗</a></div>
+          </div>
+          <div class="relative mx-auto w-full max-w-md lg:ml-auto">
+            <div aria-hidden="true" class="absolute -right-4 -top-4 h-24 w-24 rounded-full border border-[#b65b34]/35 sm:-right-6 sm:-top-6 sm:h-32 sm:w-32"></div>
+            <figure class="portrait-frame relative h-[430px] overflow-hidden rounded-[2rem] bg-[#e2b7a2] shadow-2xl shadow-[#503720]/15 sm:h-[540px] sm:rounded-[2.5rem]">
+              <img src="abir-founder.jpg" alt="Abir, the founder of Nexovetra" fetchpriority="high" class="h-full w-full object-cover object-top" />
+              <div class="photo-shade absolute inset-0"></div>
+              <figcaption class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-3 text-white sm:bottom-8 sm:left-8 sm:right-8"><div><p class="text-[10px] font-semibold uppercase tracking-[.24em] text-white/75">Founder &amp; dreamer</p><p class="mt-1 font-serif text-3xl">Abir</p></div><span class="rounded-full border border-white/60 bg-white/10 px-3 py-2 text-[10px] uppercase tracking-[.18em] backdrop-blur-sm">One step at a time</span></figcaption>
+            </figure>
+            <div class="absolute -bottom-5 -left-3 rounded-2xl border border-white/80 bg-[#fffaf1]/95 px-4 py-3 shadow-lg shadow-[#503720]/10 sm:-left-8 sm:px-5 sm:py-4"><p class="font-serif text-lg italic text-[#a44d2c]">Built from a big little dream</p><p class="mt-0.5 text-[10px] uppercase tracking-[.16em] text-[#647168]">With family, hope &amp; hard work</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="story" class="story-section text-[#f5efe4]">
+        <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+          <div class="mb-9 flex flex-col justify-between gap-5 sm:mb-12 sm:flex-row sm:items-end">
+            <div><p class="text-[10px] font-semibold uppercase tracking-[.28em] text-[#ddb68c] sm:text-xs">A story still unfolding</p><h2 class="mt-4 max-w-3xl font-serif text-4xl leading-tight sm:text-5xl lg:text-6xl">Every big dream has<br class="hidden sm:block" /> a <span class="italic text-[#ddb68c]">first chapter.</span></h2></div>
+            <p class="max-w-sm text-sm leading-6 text-[#f5efe4]/65 sm:pb-1">Mine began with a grocery shop, a curious mind, and the belief that a small beginning can still lead somewhere meaningful.</p>
+          </div>
+
+          <div class="grid items-start gap-8 lg:grid-cols-[.78fr_1.22fr] lg:gap-12">
+            <aside class="story-note reveal p-6 sm:p-8" data-reveal>
+              <div class="relative z-10">
+                <span class="story-sticker"><span aria-hidden="true" class="text-[#b65b34]">✦</span>Dream in progress</span>
+                <p class="mt-7 text-[10px] font-semibold uppercase tracking-[.24em] text-[#ddb68c]">A note from Abir</p>
+                <p class="mt-3 font-serif text-3xl leading-tight text-[#fffaf1] sm:text-4xl">“I want to build a place that feels like a little more is possible.”</p>
+                <p class="mt-5 text-sm leading-7 text-[#f5efe4]/70">Not just a business with my name on it—a warm place for people, a future for my family, and, when I’m able, a way to give a little back.</p>
+                <div class="mt-7 flex flex-wrap gap-3"><span class="story-sticker story-sticker-alt"><span aria-hidden="true">♥</span>Family first</span><span class="inline-flex items-center rounded-full border border-white/15 px-3 py-2 text-[10px] font-medium uppercase tracking-[.16em] text-[#f5efe4]/65">One step at a time</span></div>
+                <p class="mt-8 border-t border-white/15 pt-5 text-xs font-medium text-[#ddb68c]">A hope for the future — not a promise already fulfilled.</p>
+              </div>
+            </aside>
+
+            <ol class="story-timeline" aria-label="Abir’s path to Nexovetra">
+              <li class="story-chapter" data-story-chapter style="--chapter-delay: 0ms">
+                <span class="story-node" aria-hidden="true">01</span>
+                <article class="story-chapter-card"><p class="text-[9px] font-semibold uppercase tracking-[.22em] text-[#ddb68c] sm:text-[10px]">The first spark</p><h3 class="mt-2 font-serif text-2xl sm:text-3xl">A shop full of everyday stories.</h3><p class="mt-3 text-sm leading-6 text-[#f5efe4]/70">As a child, I often went with my father to his grocery shop. I saw how a small business could become part of people’s daily lives—familiar faces, honest work, and conversations across the counter. I also loved the feeling of cafés. Little by little, I began to imagine a place of my own.</p><span class="mt-4 inline-flex rounded-full bg-white/10 px-3 py-1.5 text-[10px] text-[#f5efe4]/70">A childhood idea, kept close</span></article>
+              </li>
+              <li class="story-chapter" data-story-chapter style="--chapter-delay: 90ms">
+                <span class="story-node" aria-hidden="true">02</span>
+                <article class="story-chapter-card"><p class="text-[9px] font-semibold uppercase tracking-[.22em] text-[#ddb68c] sm:text-[10px]">Learning my way</p><h3 class="mt-2 font-serif text-2xl sm:text-3xl">A curious mind, drawn to data.</h3><p class="mt-3 text-sm leading-6 text-[#f5efe4]/70">I studied computer science, completed my B.Tech in CSE, and after college started looking for work and taking on freelance projects. Data became something I truly loved—finding patterns, asking better questions, and turning information into something useful.</p></article>
+              </li>
+              <li class="story-chapter" data-story-chapter style="--chapter-delay: 180ms">
+                <span class="story-node" aria-hidden="true">03</span>
+                <article class="story-chapter-card"><p class="text-[9px] font-semibold uppercase tracking-[.22em] text-[#ddb68c] sm:text-[10px]">The dream takes shape</p><h3 class="mt-2 font-serif text-2xl sm:text-3xl">Small steps can carry a big hope.</h3><p class="mt-3 text-sm leading-6 text-[#f5efe4]/70">I come from a lower-middle-class family, so I know a dream has to grow alongside real responsibilities. I’m working toward a café built with patience and care—a place where people can slow down, share a cup, and feel welcome exactly as they are.</p></article>
+              </li>
+              <li class="story-chapter" data-story-chapter style="--chapter-delay: 270ms">
+                <span class="story-node" aria-hidden="true">04</span>
+                <article class="story-chapter-card"><p class="text-[9px] font-semibold uppercase tracking-[.22em] text-[#ddb68c] sm:text-[10px]">What success means to me</p><h3 class="mt-2 font-serif text-2xl sm:text-3xl">A future with room to share.</h3><p class="mt-3 text-sm leading-6 text-[#f5efe4]/70">I hope Nexovetra will help me support my family. And when the business is strong enough, I’d love to share some of its success with an old-age home. That’s the bigger purpose behind the dream, and I’m building toward it one step at a time.</p><span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-[#f0c99d]"><span aria-hidden="true">♡</span> For family. For community. For what comes next.</span></article>
+              </li>
+            </ol>
+          </div>
+          <p class="mt-9 text-center font-serif text-xl italic text-[#f5efe4]/75 sm:mt-12 sm:text-2xl">If you’re here, you’re part of the early chapter. <span class="text-[#ddb68c]">Thank you.</span></p>
+        </div>
+      </section>
+
+      <section aria-labelledby="values-title" data-reveal class="reveal mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24 lg:px-12">
+        <div class="mx-auto max-w-2xl text-center"><p class="text-[10px] font-semibold uppercase tracking-[.28em] text-[#a45a37] sm:text-xs">What we hope to stand for</p><h2 id="values-title" class="mt-3 font-serif text-4xl sm:text-5xl">A little care in <span class="italic text-[#b65b34]">everything.</span></h2><p class="mt-4 text-sm leading-6 text-[#647168] sm:text-base">The details matter, but the feeling matters most.</p></div>
+        <div class="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-3 sm:gap-5">
+          <article class="value-card rounded-2xl border border-[#23392f]/10 bg-white/55 p-6 sm:p-7"><span class="flex h-11 w-11 items-center justify-center rounded-full bg-[#e8ddcb] font-serif text-xl text-[#a44d2c]">01</span><h3 class="mt-5 font-serif text-2xl">Welcome, always</h3><p class="mt-2 text-sm leading-6 text-[#647168]">Come for a quick coffee, a long conversation, a quiet hour, or simply because you need a pause.</p></article>
+          <article class="value-card rounded-2xl border border-[#23392f]/10 bg-white/55 p-6 sm:p-7"><span class="flex h-11 w-11 items-center justify-center rounded-full bg-[#e8ddcb] font-serif text-xl text-[#a44d2c]">02</span><h3 class="mt-5 font-serif text-2xl">Good things, thoughtfully</h3><p class="mt-2 text-sm leading-6 text-[#647168]">Careful coffee, comforting food, and small details that make an everyday visit feel special.</p></article>
+          <article class="value-card rounded-2xl border border-[#23392f]/10 bg-white/55 p-6 sm:p-7"><span class="flex h-11 w-11 items-center justify-center rounded-full bg-[#e8ddcb] font-serif text-xl text-[#a44d2c]">03</span><h3 class="mt-5 font-serif text-2xl">Success with purpose</h3><p class="mt-2 text-sm leading-6 text-[#647168]">Build a business with care for family, community, and the chance to give something back.</p></article>
+        </div>
+      </section>
+
+      <section class="bg-[#e8ddcb]">
+        <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-12 lg:py-24">
+          <div class="reveal" data-reveal><p class="text-[10px] font-semibold uppercase tracking-[.28em] text-[#a45a37] sm:text-xs">From bean to first sip</p><h2 class="mt-3 font-serif text-4xl leading-tight sm:text-5xl">Coffee made with<br /><span class="italic text-[#b65b34]">attention, not hurry.</span></h2><p class="mt-5 max-w-lg text-sm leading-7 text-[#536258] sm:text-base">A memorable cup is a collection of small choices. Our coffee philosophy is simple: start with good ingredients, pay attention to the craft, and serve every cup with warmth.</p><a href="menu.html" class="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#234438] hover:text-[#a44d2c]">Meet the menu <span class="transition-transform group-hover:translate-x-1">→</span></a></div>
+          <div class="reveal grid gap-3 sm:grid-cols-2" data-reveal>
+            <article class="experience-card rounded-2xl border border-[#23392f]/10 bg-[#f5efe4]/80 p-5"><span class="text-xs font-semibold text-[#a44d2c]">01 / Choose</span><h3 class="mt-3 font-serif text-2xl">Start with good beans</h3><p class="mt-2 text-xs leading-5 text-[#647168]">A thoughtful foundation makes every recipe better.</p></article>
+            <article class="experience-card rounded-2xl border border-[#23392f]/10 bg-[#f5efe4]/80 p-5 sm:translate-y-6"><span class="text-xs font-semibold text-[#a44d2c]">02 / Prepare</span><h3 class="mt-3 font-serif text-2xl">Find the balance</h3><p class="mt-2 text-xs leading-5 text-[#647168]">Grind, time, and temperature each have a part to play.</p></article>
+            <article class="experience-card rounded-2xl border border-[#23392f]/10 bg-[#f5efe4]/80 p-5"><span class="text-xs font-semibold text-[#a44d2c]">03 / Craft</span><h3 class="mt-3 font-serif text-2xl">Make it yours</h3><p class="mt-2 text-xs leading-5 text-[#647168]">A familiar favorite or a new flavor to discover.</p></article>
+            <article class="experience-card rounded-2xl border border-[#23392f]/10 bg-[#f5efe4]/80 p-5 sm:translate-y-6"><span class="text-xs font-semibold text-[#a44d2c]">04 / Share</span><h3 class="mt-3 font-serif text-2xl">Serve with care</h3><p class="mt-2 text-xs leading-5 text-[#647168]">Because a good cup is even better when you feel welcome.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="ambience-title" data-reveal class="reveal mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24 lg:px-12">
+        <div class="mb-8 flex flex-col justify-between gap-4 sm:mb-12 sm:flex-row sm:items-end"><div><p class="text-[10px] font-semibold uppercase tracking-[.28em] text-[#a45a37] sm:text-xs">Make yourself at home</p><h2 id="ambience-title" class="mt-3 font-serif text-4xl sm:text-5xl">For every kind<br class="sm:hidden" /> of <span class="italic text-[#b65b34]">day.</span></h2></div><p class="max-w-sm text-sm leading-6 text-[#536258]">A café should make room for the way you want to spend your time.</p></div>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <article class="experience-card rounded-2xl border border-[#23392f]/10 bg-white/55 p-5 sm:p-6"><span aria-hidden="true" class="text-2xl">☕</span><h3 class="mt-4 font-serif text-2xl">Catch up</h3><p class="mt-2 text-sm leading-6 text-[#647168]">Pull up a chair, order something you love, and let the conversation wander.</p></article>
+          <article class="experience-card rounded-2xl border border-[#23392f]/10 bg-white/55 p-5 sm:p-6"><span aria-hidden="true" class="text-2xl">✎</span><h3 class="mt-4 font-serif text-2xl">Find your focus</h3><p class="mt-2 text-sm leading-6 text-[#647168]">Bring a book, a laptop, or the idea you’ve been meaning to work on.</p></article>
+          <article class="experience-card rounded-2xl border border-[#23392f]/10 bg-white/55 p-5 sm:p-6"><span aria-hidden="true" class="text-2xl">☀</span><h3 class="mt-4 font-serif text-2xl">Take a pause</h3><p class="mt-2 text-sm leading-6 text-[#647168]">No big plan needed. Sometimes a quiet corner and a warm cup are enough.</p></article>
+        </div>
+      </section>
+
+      <section aria-labelledby="gallery-title" class="bg-[#23392f] text-[#f5efe4]">
+        <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24 lg:px-12">
+          <div class="mb-8 flex flex-col justify-between gap-4 sm:mb-12 sm:flex-row sm:items-end"><div><p class="text-[10px] font-semibold uppercase tracking-[.28em] text-[#ddb68c] sm:text-xs">A few frames of the feeling</p><h2 id="gallery-title" class="mt-3 font-serif text-4xl sm:text-5xl">Little moments, <span class="italic text-[#ddb68c]">beautifully kept.</span></h2></div><p class="max-w-xs text-sm leading-6 text-[#f5efe4]/65">Tap a photo to take a closer look.</p></div>
+          <div class="gallery-mosaic">
+            <button type="button" class="gallery-photo group overflow-hidden rounded-2xl bg-[#425248] text-left" data-gallery-src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=90" data-gallery-alt="A sunlit café with timber details and green plants"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=850&q=82" alt="A sunlit café with timber details and green plants" loading="lazy" class="h-full w-full object-cover" /><span class="photo-shade absolute inset-0 opacity-50 transition-opacity group-hover:opacity-90"></span><span class="absolute bottom-3 left-3 text-xs font-medium text-white sm:bottom-5 sm:left-5">A seat in the sun</span></button>
+            <button type="button" class="gallery-photo group relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#425248] text-left" data-gallery-src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=90" data-gallery-alt="Fresh coffee served in ceramic cups"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=850&q=82" alt="Fresh coffee served in ceramic cups" loading="lazy" class="h-full w-full object-cover" /><span class="photo-shade absolute inset-0 opacity-40 transition-opacity group-hover:opacity-80"></span><span class="absolute bottom-3 left-3 text-xs font-medium text-white sm:bottom-5 sm:left-5">The first pour</span></button>
+            <button type="button" class="gallery-photo group relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#425248] text-left" data-gallery-src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1600&q=90" data-gallery-alt="A cozy corner table in a neighborhood café"><img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=850&q=82" alt="A cozy corner table in a neighborhood café" loading="lazy" class="h-full w-full object-cover" /><span class="photo-shade absolute inset-0 opacity-40 transition-opacity group-hover:opacity-80"></span><span class="absolute bottom-3 left-3 text-xs font-medium text-white sm:bottom-5 sm:left-5">A favorite corner</span></button>
+            <button type="button" class="gallery-photo group relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#425248] text-left" data-gallery-src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=90" data-gallery-alt="Warm light falling across a relaxed café interior"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=850&q=82" alt="Warm light falling across a relaxed café interior" loading="lazy" class="h-full w-full object-cover" /><span class="photo-shade absolute inset-0 opacity-40 transition-opacity group-hover:opacity-80"></span><span class="absolute bottom-3 left-3 text-xs font-medium text-white sm:bottom-5 sm:left-5">An easy afternoon</span></button>
+            <button type="button" class="gallery-photo group relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#425248] text-left" data-gallery-src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1600&q=90" data-gallery-alt="The warm wood and welcoming counter of a café"><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=850&q=82" alt="The warm wood and welcoming counter of a café" loading="lazy" class="h-full w-full object-cover" /><span class="photo-shade absolute inset-0 opacity-40 transition-opacity group-hover:opacity-80"></span><span class="absolute bottom-3 left-3 text-xs font-medium text-white sm:bottom-5 sm:left-5">Made for lingering</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="gather-title" data-reveal class="reveal mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24 lg:px-12">
+        <div class="grid gap-8 rounded-[2rem] bg-[#e8ddcb] p-6 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-14">
+          <div><p class="text-[10px] font-semibold uppercase tracking-[.28em] text-[#a45a37] sm:text-xs">What’s ahead</p><h2 id="gather-title" class="mt-3 max-w-2xl font-serif text-4xl leading-tight sm:text-5xl">Good coffee makes room for <span class="italic text-[#b65b34]">good company.</span></h2><p class="mt-4 max-w-2xl text-sm leading-7 text-[#536258] sm:text-base">As Nexovetra grows, I hope to host slow coffee tastings, open-table conversations, and little gatherings that bring neighbors together. For now, these are ideas I’m excited to build toward—with you.</p></div>
+          <a href="visitus.html" class="group inline-flex w-fit items-center gap-3 rounded-full bg-[#234438] px-6 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#345a49]">Come say hello <span class="transition-transform group-hover:translate-x-1">↗</span></a>
+        </div>
+      </section>
+
+      <section class="border-t border-[#23392f]/10">
+        <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:px-8 sm:py-12 md:flex-row md:items-center md:justify-between lg:px-12">
+          <div><p class="font-serif text-2xl">A dream is better when shared.</p><p class="mt-1 text-sm text-[#647168]">Thank you for being part of the Nexovetra story.</p></div>
+          <div class="flex flex-wrap gap-3"><a href="home.html" class="rounded-full border border-[#23392f]/20 px-5 py-3 text-sm font-semibold text-[#23392f] transition hover:border-[#b65b34] hover:text-[#a44d2c]">Back home</a><a href="menu.html" class="rounded-full bg-[#234438] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#345a49]">Explore the menu ↗</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-[#23392f] text-[#f5efe4]"><div class="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 md:grid-cols-3 lg:px-12"><div><a href="home.html" class="font-serif text-2xl">Nexovetra</a><p class="mt-2 text-sm text-[#f5efe4]/65">Coffee · Food · Connections</p><a href="visitus.html" class="mt-3 inline-flex text-sm text-[#ddb68c] hover:text-white">Location &amp; contact ↗</a></div><div><p class="text-[10px] font-semibold uppercase tracking-[.2em] text-[#ddb68c]">Company</p><div class="mt-3 grid gap-2 text-sm text-[#f5efe4]/75"><a href="careers.html" class="hover:text-white">Careers</a><a href="cafe-team.html" class="hover:text-white">Our café team</a><a href="brew-guide.html" class="hover:text-white">Brew guide</a><a href="visitus.html" class="hover:text-white">Contact us</a></div></div><div><p class="text-[10px] font-semibold uppercase tracking-[.2em] text-[#ddb68c]">Explore &amp; policies</p><div class="mt-3 grid gap-2 text-sm text-[#f5efe4]/75"><a href="home.html" class="hover:text-white">Home</a><a href="menu.html" class="hover:text-white">Menu</a><a href="order-reservations.html" class="hover:text-white">Order &amp; Book</a><a href="policies.html" class="hover:text-white">Policies &amp; help</a></div></div></div><div class="border-t border-white/10 px-5 py-4 text-center text-xs text-[#f5efe4]/45"><span class="mb-2 block text-xs leading-5 text-[#f5efe4]/65">This website is an educational project imagining a future café where coffee, technology, and community grow together.</span>© 2026 Nexovetra Café · Made for slow sips and good company.</div></footer>
+
+    <dialog id="gallery-dialog" class="max-h-[90vh] max-w-[92vw] overflow-hidden rounded-2xl border-0 bg-[#17251d] p-0 text-white shadow-2xl backdrop:bg-[#17251d]/85">
+      <div class="relative"><img id="gallery-large" src="" alt="" class="block max-h-[82vh] max-w-[92vw] object-contain" /><button id="gallery-close" type="button" class="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/55 text-2xl text-white transition hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label="Close photo">×</button></div>
+    </dialog>
+
+    <script>
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('js-motion');
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+        document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element));
+
+        const storyObserver = new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.18, rootMargin: '0px 0px -20px 0px' });
+        document.querySelectorAll('[data-story-chapter]').forEach((element) => storyObserver.observe(element));
+      }
+
+      const galleryDialog = document.getElementById('gallery-dialog');
+      const galleryLarge = document.getElementById('gallery-large');
+      document.querySelectorAll('[data-gallery-src]').forEach((photo) => {
+        photo.addEventListener('click', () => {
+          galleryLarge.src = photo.dataset.gallerySrc;
+          galleryLarge.alt = photo.dataset.galleryAlt;
+          galleryDialog.showModal();
+        });
+      });
+      document.getElementById('gallery-close').addEventListener('click', () => galleryDialog.close());
+      galleryDialog.addEventListener('click', (event) => {
+        if (event.target === galleryDialog) galleryDialog.close();
+      });
+      galleryDialog.addEventListener('close', () => { galleryLarge.src = ''; });
+    </script>
+  </body>
+</html>

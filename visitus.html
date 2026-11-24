@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5efe4" />
+    <title>Nexovetra — Coffee, Food, Connections</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Keep form controls inside their columns even if Tailwind's preflight is unavailable. */
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { width: 100%; }
+      body { margin: 0; overflow-x: hidden; }
+      form input, form select { min-width: 0; max-width: 100%; }
+
+      @keyframes float-in {
+        from { opacity: 0; transform: translateY(18px) scale(.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      @keyframes glow {
+        0%, 100% { opacity: .4; transform: scale(.96); }
+        50% { opacity: .75; transform: scale(1.04); }
+      }
+
+      .animate-float-in { animation: float-in 700ms cubic-bezier(.2,.8,.2,1) both; }
+      .animate-glow { animation: glow 5s ease-in-out infinite; }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: .01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      @media (max-width: 639px) {
+        form input, form select { font-size: 16px; }
+      }
+    </style>
+      <link rel="stylesheet" href="interactions.css" />
+  </head>
+  <body class="min-h-screen bg-[#f5efe4] text-stone-900 antialiased selection:bg-amber-300 selection:text-stone-950">
+    <header class="relative z-20 border-b border-[#23392f]/10 bg-[#f5efe4]/95">
+      <nav aria-label="Main navigation" class="mx-auto flex w-full max-w-7xl items-center justify-between gap-1 px-3 py-4 sm:gap-4 sm:px-8 lg:px-12">
+        <a href="home.html" class="flex shrink-0 items-center gap-1.5 sm:gap-2.5" aria-label="Nexovetra home">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#234438] text-[#f5efe4] sm:h-10 sm:w-10"><svg aria-hidden="true" viewBox="0 0 32 32" class="h-6 w-6" fill="none"><path d="M7 12h18l-1.7 13H8.7L7 12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 9c0-2 2-2 2-4M16 9c0-2 2-2 2-4M22 9c0-2 2-2 2-4M25 15h2.2a3.8 3.8 0 0 1 0 7.6h-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="font-serif text-base font-semibold tracking-tight sm:text-2xl">Nexovetra</span>
+        </a>
+        <div class="flex shrink-0 items-center gap-1 text-[11px] font-medium sm:gap-6 sm:text-sm">
+          <a href="home.html" class="text-stone-600 transition hover:text-[#b65b34]">Home</a>
+          <a href="menu.html" class="text-stone-600 transition hover:text-[#b65b34]">Menu</a>
+          <a href="experience.html" class="text-stone-600 transition hover:text-[#b65b34]"><span class="sm:hidden">Story</span><span class="hidden sm:inline">Our Experience</span></a>
+          <a href="order-reservations.html" class="text-stone-600 transition hover:text-[#b65b34]"><span class="sm:hidden">Order</span><span class="hidden sm:inline">Order &amp; Book</span></a>
+          <a href="visitus.html" aria-current="page" class="inline-flex items-center gap-0.5 rounded-full bg-[#234438] px-2 py-2.5 text-[11px] font-semibold text-white transition hover:bg-[#345a49] sm:gap-2 sm:px-5 sm:text-sm"><span class="sm:hidden">Visit</span><span class="hidden sm:inline">Visit us</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+    <main class="relative isolate min-h-screen overflow-hidden px-5 py-14 sm:px-8 sm:py-20">
+      <div aria-hidden="true" class="animate-glow pointer-events-none absolute left-1/2 top-40 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-amber-700/15 blur-3xl sm:h-96 sm:w-96"></div>
+
+      <div class="mx-auto w-full max-w-3xl">
+        <header class="animate-float-in mb-12 text-center sm:mb-16">
+          <span class="mb-5 inline-flex items-center gap-2 rounded-full border border-stone-300/80 bg-white/70 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-stone-600">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_2px_rgba(52,211,153,0.55)]"></span>
+            Coffee, food & good company
+          </span>
+          <h1 class="bg-gradient-to-r from-stone-900 via-amber-900 to-emerald-900 bg-clip-text text-5xl font-semibold tracking-tight text-transparent sm:text-7xl">Nexovetra</h1>
+          <p class="mt-5 text-xs font-semibold tracking-[0.28em] text-stone-700 sm:text-sm">COFFEE <span class="text-amber-700">:</span> FOOD <span class="text-amber-700">:</span> CONNECTIONS</p>
+          <div class="mx-auto my-6 h-px w-16 bg-gradient-to-r from-transparent via-amber-700/50 to-transparent"></div>
+          <p class="text-lg text-stone-600 sm:text-xl">Where every moment begins</p>
+        </header>
+
+        <section aria-labelledby="location-title" class="animate-float-in mb-6 overflow-hidden rounded-3xl border border-stone-300/80 bg-white/75 shadow-xl shadow-amber-950/10 backdrop-blur-xl sm:mb-8" style="animation-delay: 80ms">
+          <div class="grid sm:grid-cols-[1.05fr_0.95fr]">
+            <div class="p-6 sm:p-9">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-amber-800">Find your way to us</p>
+              <h2 id="location-title" class="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">A little corner of Mumbai</h2>
+              <p class="mt-3 text-sm leading-6 text-stone-600">Drop by after exploring the market lanes, settle in with a coffee, and make a moment of it. Mumbai’s seafront is a short trip away.</p>
+              <address class="mt-6 not-italic">
+                <p class="font-semibold text-stone-900">Nexovetra Café</p>
+                <p class="mt-1 text-sm leading-6 text-stone-600">Zaveri Bazaar, Kalbadevi<br />Mumbai, Maharashtra 400002<br />India</p>
+              </address>
+              <a href="https://www.google.com/maps/search/?api=1&query=Zaveri+Bazaar%2C+Kalbadevi%2C+Mumbai%2C+Maharashtra+400002" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 rounded-xl border border-amber-800/20 bg-amber-50 px-4 py-2.5 text-sm font-semibold text-amber-900 transition hover:-translate-y-0.5 hover:bg-amber-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-700">
+                <svg aria-hidden="true" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.69 18.93a.75.75 0 0 0 .62 0c.48-.21 1.19-.94 1.95-1.9C14 14.98 16.5 11.5 16.5 8A6.5 6.5 0 1 0 3.5 8c0 3.5 2.5 6.98 4.24 9.03.76.96 1.47 1.69 1.95 1.9ZM10 10.5A2.5 2.5 0 1 0 10 5.5a2.5 2.5 0 0 0 0 5Z" clip-rule="evenodd"/></svg>
+                Open map <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div class="relative min-h-52 overflow-hidden bg-gradient-to-br from-amber-100 via-orange-100 to-emerald-100 sm:min-h-full">
+              <div aria-hidden="true" class="absolute inset-0 opacity-40" style="background-image: radial-gradient(#8b7355 1px, transparent 1px); background-size: 18px 18px;"></div>
+              <div aria-hidden="true" class="absolute -right-10 -top-10 h-48 w-48 rounded-full border border-emerald-800/10"></div>
+              <div aria-hidden="true" class="absolute -right-2 top-0 h-32 w-32 rounded-full border border-emerald-800/10"></div>
+              <div class="absolute inset-0 flex items-center justify-center p-6">
+                <div class="rounded-2xl border border-white/80 bg-white/80 px-5 py-4 text-center shadow-lg shadow-amber-950/10 backdrop-blur">
+                  <span class="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-amber-800 text-white shadow-md shadow-amber-900/20">
+                    <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.69 18.93a.75.75 0 0 0 .62 0c.48-.21 1.19-.94 1.95-1.9C14 14.98 16.5 11.5 16.5 8A6.5 6.5 0 1 0 3.5 8c0 3.5 2.5 6.98 4.24 9.03.76.96 1.47 1.69 1.95 1.9ZM10 10.5A2.5 2.5 0 1 0 10 5.5a2.5 2.5 0 0 0 0 5Z" clip-rule="evenodd"/></svg>
+                  </span>
+                  <p class="text-sm font-semibold text-stone-900">Zaveri Bazaar</p>
+                  <p class="mt-1 text-xs text-stone-600">Kalbadevi · Mumbai 400002</p>
+                </div>
+              </div>
+              <p class="absolute bottom-3 left-0 right-0 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-stone-600">Market lanes · Mumbai warmth · Coffee moments</p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="contact-title" class="animate-float-in rounded-3xl border border-stone-300/80 bg-white/75 p-6 shadow-2xl shadow-amber-950/10 backdrop-blur-xl sm:p-10" style="animation-delay: 120ms">
+          <div class="mb-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-amber-800">Stay in touch</p>
+            <h2 id="contact-title" class="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">Contact us</h2>
+            <p class="mt-2 text-sm leading-6 text-stone-600">Questions, plans, or just saying hello — we’d love to hear from you.</p>
+          </div>
+
+          <div aria-label="Café contact details" class="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <a href="mailto:abirsheepanskura004@gmail.com" class="group rounded-2xl border border-stone-200 bg-[#fffaf1] p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-700/30 hover:shadow-lg hover:shadow-amber-950/5">
+              <span aria-hidden="true" class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-amber-100 text-amber-900">✉</span>
+              <span class="block text-xs font-semibold uppercase tracking-[0.12em] text-stone-500">Email us</span>
+              <span class="mt-1 block break-all text-sm font-semibold text-stone-900 group-hover:text-amber-800">abirsheepanskura004@gmail.com</span>
+              <span class="mt-2 block text-xs text-stone-500">Tap to write us an email ↗</span>
+            </a>
+
+            <div class="rounded-2xl border border-stone-200 bg-[#fffaf1] p-4">
+              <span aria-hidden="true" class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-emerald-900">☎</span>
+              <span class="block text-xs font-semibold uppercase tracking-[0.12em] text-stone-500">Call the café</span>
+              <span class="mt-1 block text-lg font-semibold tracking-wide text-stone-900">+91 22 4XXX XXXX</span>
+              <span class="mt-2 block text-xs leading-5 text-stone-500">Masked preview — replace with the café’s real number before publishing.</span>
+            </div>
+
+            <div class="rounded-2xl border border-stone-200 bg-[#fffaf1] p-4 sm:col-span-2 lg:col-span-1">
+              <span aria-hidden="true" class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-orange-100 text-orange-900">◷</span>
+              <span class="block text-xs font-semibold uppercase tracking-[0.12em] text-stone-500">Sample café hours</span>
+              <span class="mt-1 block text-sm font-semibold text-stone-900">Every day · 8:00 AM–10:00 PM</span>
+              <span class="mt-2 block text-xs text-stone-500">A little time for coffee, any day of the week.</span>
+            </div>
+          </div>
+
+          <form id="contact-form" action="/api/contact" method="POST" class="grid gap-5 sm:grid-cols-2" novalidate>
+            <input type="hidden" name="_subject" value="New Nexovetra contact request" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" id="country-name-value" name="country" value="United States" />
+            <input type="hidden" id="country-code-value" name="country_code" value="+1" />
+            <div class="hidden" aria-hidden="true"><label for="contact-website">Leave this field empty</label><input id="contact-website" name="_honey" type="text" tabindex="-1" autocomplete="off" /></div>
+            <div class="sm:col-span-2">
+              <label for="name" class="mb-2 block text-sm font-medium text-stone-800">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" class="w-full rounded-xl border border-stone-300/80 bg-white/80 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-500 focus:border-amber-700/60 focus:ring-2 focus:ring-amber-700/10" />
+            </div>
+
+            <div>
+              <label for="age" class="mb-2 block text-sm font-medium text-stone-800">Age</label>
+              <input id="age" name="age" type="number" min="1" max="120" inputmode="numeric" required placeholder="Your age" class="w-full rounded-xl border border-stone-300/80 bg-white/80 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-500 focus:border-amber-700/60 focus:ring-2 focus:ring-amber-700/10" />
+            </div>
+
+            <div>
+              <label for="gender" class="mb-2 block text-sm font-medium text-stone-800">Gender</label>
+              <select id="gender" name="gender" required class="w-full rounded-xl border border-stone-300/80 bg-white/80 px-4 py-3 text-sm text-stone-900 outline-none transition focus:border-amber-700/60 focus:ring-2 focus:ring-amber-700/10">
+                <option value="" disabled selected>Select gender</option>
+                <option>Woman</option>
+                <option>Man</option>
+                <option>Non-binary</option>
+                <option>Prefer to self-describe</option>
+                <option>Prefer not to say</option>
+              </select>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label for="phone" class="mb-2 block text-sm font-medium text-stone-800">Phone number</label>
+              <div class="flex gap-2">
+                <div class="relative w-[9.5rem] shrink-0">
+                  <button id="country-button" type="button" aria-haspopup="listbox" aria-expanded="false" class="flex h-full min-h-[48px] w-full items-center justify-between rounded-xl border border-stone-300/80 bg-white/80 px-3 text-sm text-stone-900 outline-none transition hover:border-stone-400 focus:border-amber-700/60 focus:ring-2 focus:ring-amber-700/10">
+                    <span class="flex items-center gap-2"><span id="country-flag" aria-hidden="true">🇺🇸</span><span id="country-code">+1</span></span>
+                    <svg aria-hidden="true" class="h-4 w-4 text-stone-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 7.47a.75.75 0 0 1 1.06 0L10 11.19l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 8.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+                  </button>
+                  <div id="country-menu" class="absolute left-0 top-[calc(100%+8px)] z-20 hidden w-72 overflow-hidden rounded-2xl border border-stone-300/80 bg-white p-2 shadow-2xl shadow-stone-950/20">
+                    <label for="country-search" class="sr-only">Search countries or calling codes</label>
+                    <input id="country-search" type="search" autocomplete="off" placeholder="Search country or code…" class="mb-2 w-full rounded-lg border border-stone-300/80 bg-stone-100 px-3 py-2.5 text-sm text-stone-900 outline-none placeholder:text-stone-500 focus:border-amber-700/60" />
+                    <ul id="country-options" role="listbox" aria-label="Country calling codes" class="max-h-56 overflow-y-auto"></ul>
+                  </div>
+                </div>
+                <input id="phone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" required placeholder="Phone number" class="min-w-0 flex-1 rounded-xl border border-stone-300/80 bg-white/80 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-500 focus:border-amber-700/60 focus:ring-2 focus:ring-amber-700/10" />
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label for="email" class="mb-2 block text-sm font-medium text-stone-800">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@gmail.com" aria-describedby="email-help" class="w-full rounded-xl border border-stone-300/80 bg-white/80 px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-500 focus:border-amber-700/60 focus:ring-2 focus:ring-amber-700/10" />
+              <p id="email-help" class="mt-2 text-xs text-stone-500">Please use a Gmail address ending in @gmail.com.</p>
+            </div>
+
+            <div class="sm:col-span-2">
+              <button type="submit" class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-stone-950 transition duration-200 hover:-translate-y-0.5 hover:bg-amber-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-700">
+                Send message <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+              </button>
+              <p id="form-message" role="status" aria-live="polite" class="mt-4 hidden rounded-xl border px-4 py-3 text-sm leading-6"></p>
+            </div>
+          </form>
+        </section>
+        <footer class="mt-8 rounded-2xl border border-stone-300/80 bg-white/60 p-4 text-center text-xs text-stone-500"><p>Nexovetra · Made for slow sips and good company.</p><p class="mt-2 leading-5">This website is an educational project imagining a future café where coffee, technology, and community grow together.</p><nav aria-label="Company and policy links" class="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2"><a href="careers.html" class="hover:text-amber-800">Careers</a><a href="cafe-team.html" class="hover:text-amber-800">Our café team</a><a href="brew-guide.html" class="hover:text-amber-800">Brew guide</a><a href="policies.html" class="hover:text-amber-800">Policies</a><a href="home.html" class="hover:text-amber-800">Home</a></nav></footer>
+      </div>
+    </main>
+
+    <script>
+      const countries = [
+        { name: 'United States', flag: '🇺🇸', code: '+1' }, { name: 'Canada', flag: '🇨🇦', code: '+1' },
+        { name: 'United Kingdom', flag: '🇬🇧', code: '+44' }, { name: 'India', flag: '🇮🇳', code: '+91' },
+        { name: 'Australia', flag: '🇦🇺', code: '+61' }, { name: 'New Zealand', flag: '🇳🇿', code: '+64' },
+        { name: 'Ireland', flag: '🇮🇪', code: '+353' }, { name: 'France', flag: '🇫🇷', code: '+33' },
+        { name: 'Germany', flag: '🇩🇪', code: '+49' }, { name: 'Italy', flag: '🇮🇹', code: '+39' },
+        { name: 'Spain', flag: '🇪🇸', code: '+34' }, { name: 'Portugal', flag: '🇵🇹', code: '+351' },
+        { name: 'Netherlands', flag: '🇳🇱', code: '+31' }, { name: 'Belgium', flag: '🇧🇪', code: '+32' },
+        { name: 'Switzerland', flag: '🇨🇭', code: '+41' }, { name: 'Austria', flag: '🇦🇹', code: '+43' },
+        { name: 'Sweden', flag: '🇸🇪', code: '+46' }, { name: 'Norway', flag: '🇳🇴', code: '+47' },
+        { name: 'Denmark', flag: '🇩🇰', code: '+45' }, { name: 'Finland', flag: '🇫🇮', code: '+358' },
+        { name: 'Poland', flag: '🇵🇱', code: '+48' }, { name: 'Greece', flag: '🇬🇷', code: '+30' },
+        { name: 'Turkey', flag: '🇹🇷', code: '+90' }, { name: 'United Arab Emirates', flag: '🇦🇪', code: '+971' },
+        { name: 'Saudi Arabia', flag: '🇸🇦', code: '+966' }, { name: 'Israel', flag: '🇮🇱', code: '+972' },
+        { name: 'Singapore', flag: '🇸🇬', code: '+65' }, { name: 'Japan', flag: '🇯🇵', code: '+81' },
+        { name: 'South Korea', flag: '🇰🇷', code: '+82' }, { name: 'China', flag: '🇨🇳', code: '+86' },
+        { name: 'Hong Kong', flag: '🇭🇰', code: '+852' }, { name: 'Thailand', flag: '🇹🇭', code: '+66' },
+        { name: 'Malaysia', flag: '🇲🇾', code: '+60' }, { name: 'Indonesia', flag: '🇮🇩', code: '+62' },
+        { name: 'Philippines', flag: '🇵🇭', code: '+63' }, { name: 'Pakistan', flag: '🇵🇰', code: '+92' },
+        { name: 'Bangladesh', flag: '🇧🇩', code: '+880' }, { name: 'Sri Lanka', flag: '🇱🇰', code: '+94' },
+        { name: 'South Africa', flag: '🇿🇦', code: '+27' }, { name: 'Nigeria', flag: '🇳🇬', code: '+234' },
+        { name: 'Egypt', flag: '🇪🇬', code: '+20' }, { name: 'Kenya', flag: '🇰🇪', code: '+254' },
+        { name: 'Brazil', flag: '🇧🇷', code: '+55' }, { name: 'Mexico', flag: '🇲🇽', code: '+52' },
+        { name: 'Argentina', flag: '🇦🇷', code: '+54' }, { name: 'Chile', flag: '🇨🇱', code: '+56' },
+        { name: 'Colombia', flag: '🇨🇴', code: '+57' }
+      ];
+
+      const countryButton = document.getElementById('country-button');
+      const countryMenu = document.getElementById('country-menu');
+      const countrySearch = document.getElementById('country-search');
+      const countryOptions = document.getElementById('country-options');
+      let selectedCountry = countries[0];
+
+      function renderCountries(query = '') {
+        const normalizedQuery = query.trim().toLowerCase();
+        const matches = countries.filter((country) =>
+          `${country.name} ${country.code}`.toLowerCase().includes(normalizedQuery)
+        );
+        countryOptions.replaceChildren();
+
+        if (matches.length === 0) {
+          const empty = document.createElement('li');
+          empty.className = 'px-3 py-3 text-sm text-stone-500';
+          empty.textContent = 'No matching country';
+          countryOptions.append(empty);
+          return;
+        }
+
+        matches.forEach((country) => {
+          const item = document.createElement('li');
+          item.setAttribute('role', 'option');
+          const option = document.createElement('button');
+          option.type = 'button';
+          option.className = 'flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-stone-800 hover:bg-stone-100 focus:bg-stone-100 focus:outline-none';
+          option.innerHTML = `<span aria-hidden="true" class="text-lg">${country.flag}</span><span class="flex-1">${country.name}</span><span class="text-stone-600">${country.code}</span>`;
+          option.addEventListener('click', () => {
+            selectedCountry = country;
+            document.getElementById('country-flag').textContent = country.flag;
+            document.getElementById('country-code').textContent = country.code;
+            document.getElementById('country-name-value').value = country.name;
+            document.getElementById('country-code-value').value = country.code;
+            countryMenu.classList.add('hidden');
+            countryButton.setAttribute('aria-expanded', 'false');
+            countryButton.focus();
+          });
+          item.append(option);
+          countryOptions.append(item);
+        });
+      }
+
+      renderCountries();
+      countryButton.addEventListener('click', () => {
+        const willOpen = countryMenu.classList.contains('hidden');
+        countryMenu.classList.toggle('hidden', !willOpen);
+        countryButton.setAttribute('aria-expanded', String(willOpen));
+        if (willOpen) {
+          countrySearch.value = '';
+          renderCountries();
+          countrySearch.focus();
+        }
+      });
+      countrySearch.addEventListener('input', () => renderCountries(countrySearch.value));
+      document.addEventListener('click', (event) => {
+        if (!countryMenu.contains(event.target) && !countryButton.contains(event.target)) {
+          countryMenu.classList.add('hidden');
+          countryButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !countryMenu.classList.contains('hidden')) {
+          countryMenu.classList.add('hidden');
+          countryButton.setAttribute('aria-expanded', 'false');
+          countryButton.focus();
+        }
+      });
+
+      const form = document.getElementById('contact-form');
+      const emailInput = document.getElementById('email');
+      const formMessage = document.getElementById('form-message');
+      const submitButton = form.querySelector('button[type="submit"]');
+      function showFormMessage(message, error = false) {
+        formMessage.textContent = message;
+        formMessage.classList.remove('hidden', 'border-emerald-400/20', 'bg-emerald-400/10', 'text-emerald-200', 'border-red-300', 'bg-red-50', 'text-red-800');
+        formMessage.classList.add(...(error
+          ? ['border-red-300', 'bg-red-50', 'text-red-800']
+          : ['border-emerald-400/30', 'bg-emerald-50', 'text-emerald-900']));
+      }
+      function validateGmail() {
+        const email = emailInput.value.trim();
+        emailInput.setCustomValidity(email && !/^[^\s@]+@gmail\.com$/i.test(email)
+          ? 'Please enter an email address ending in @gmail.com.'
+          : '');
+      }
+      emailInput.addEventListener('input', validateGmail);
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        validateGmail();
+        formMessage.classList.add('hidden');
+        if (!form.reportValidity()) return;
+
+        const originalButtonText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending…';
+        submitButton.classList.add('cursor-wait', 'opacity-70');
+        try {
+          const payload = Object.fromEntries(new FormData(form).entries());
+          payload.phone = `${selectedCountry.code} ${document.getElementById('phone').value.trim()}`;
+          const response = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const result = await response.json();
+          if (!response.ok || result.success === false) throw new Error(result.message || 'The form service could not accept this message.');
+          showFormMessage(`Thanks, ${document.getElementById('name').value.trim()}! Your message has been submitted. We’ll be in touch soon.`);
+          form.reset();
+          selectedCountry = countries[0];
+          document.getElementById('country-flag').textContent = selectedCountry.flag;
+          document.getElementById('country-code').textContent = selectedCountry.code;
+          document.getElementById('country-name-value').value = selectedCountry.name;
+          document.getElementById('country-code-value').value = selectedCountry.code;
+        } catch (error) {
+          showFormMessage(location.protocol === 'file:'
+            ? 'Please open this page through a local web server (such as VS Code Live Server) before sending the form.'
+            : 'We couldn’t send your message right now. Please try again in a moment, or contact us directly by email.', true);
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+          submitButton.classList.remove('cursor-wait', 'opacity-70');
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+NEXOVETRA CAFE WEBSITE
+
+Start the website on your computer:
+1. Open PowerShell or Terminal in this folder.
+2. Run: node server.js
+3. Keep the terminal window open.
+4. Open the localhost link printed in the terminal.
+
+Open the site on a phone:
+1. Connect the phone and computer to the same Wi-Fi network.
+2. Run npm start on the computer.
+3. Open the phone link printed in the terminal. If Windows asks, allow Node.js through the firewall on your private network.
+
+The Visit Us form sends submissions through FormSubmit to the email configured in server.js. The first submission triggers an activation email; click its activation link to enable delivery. The server forwards submissions without storing them locally.
+
+For a public website, deploy this Node.js project to a host that supports Node.js and keep the hosting environment's PORT setting enabled.

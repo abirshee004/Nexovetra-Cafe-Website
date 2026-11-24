@@ -1,0 +1,86 @@
+/* Shared, lightweight feedback for button-like links and controls. */
+@keyframes shared-cta-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+a[class*="rounded-full"]:not(.hero-cta-float),
+button[type="submit"]:not(:disabled) {
+  animation: shared-cta-float 4.8s ease-in-out infinite;
+}
+
+a[class*="rounded-full"]:nth-of-type(even),
+button[type="submit"]:nth-of-type(even) {
+  animation-delay: -2.4s;
+}
+
+a[class*="rounded-full"]:hover,
+a[class*="rounded-full"]:focus-visible,
+button[type="submit"]:hover,
+button[type="submit"]:focus-visible {
+  animation-play-state: paused;
+}
+
+/* Section jump links are compact navigation controls, so keep them still. */
+nav[aria-label="Policy sections"] a {
+  animation: none;
+}
+
+a[class*="rounded-"],
+a[role="button"],
+button,
+input[type="button"],
+input[type="submit"] {
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 260ms ease,
+    translate 260ms cubic-bezier(.2, .8, .2, 1),
+    scale 180ms ease;
+}
+
+a[class*="rounded-"]:focus-visible,
+a[role="button"]:focus-visible,
+button:focus-visible,
+input[type="button"]:focus-visible,
+input[type="submit"]:focus-visible {
+  outline: 3px solid rgba(182, 91, 52, .55);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a[class*="rounded-"]:not([aria-disabled="true"]):hover,
+  a[role="button"]:not([aria-disabled="true"]):hover,
+  button:not(:disabled):hover,
+  input[type="button"]:not(:disabled):hover,
+  input[type="submit"]:not(:disabled):hover {
+    translate: 0 -2px;
+    box-shadow: 0 10px 22px rgba(54, 43, 29, .13);
+  }
+}
+
+a[class*="rounded-"]:active,
+a[role="button"]:active,
+button:not(:disabled):active,
+input[type="button"]:not(:disabled):active,
+input[type="submit"]:not(:disabled):active {
+  translate: 0 0;
+  scale: .98;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a[class*="rounded-full"],
+  button[type="submit"] {
+    animation: none !important;
+  }
+
+  a[class*="rounded-"],
+  a[role="button"],
+  button,
+  input[type="button"],
+  input[type="submit"] {
+    transition: none !important;
+  }
+}

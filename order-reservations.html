@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5efe4" />
+    <meta name="description" content="Order coffee and food for takeaway, or request a table at Nexovetra Café." />
+    <title>Order &amp; Reservations — Nexovetra Café</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; min-width: 320px; overflow-x: hidden; }
+      .nav-link { position: relative; }
+      .nav-link::after { position: absolute; right: 0; bottom: -.3rem; left: 0; height: 1px; content: ""; background: #b65b34; transform: scaleX(0); transform-origin: left; transition: transform 220ms ease; }
+      .nav-link:hover::after, .nav-link:focus-visible::after { transform: scaleX(1); }
+      .seat-photo img { transition: transform 900ms cubic-bezier(.2,.7,.2,1), filter 600ms ease; }
+      .seat-photo:hover img { transform: scale(1.045); filter: saturate(1.08); }
+      .order-item { transition: transform 280ms cubic-bezier(.2,.8,.2,1), box-shadow 280ms ease, border-color 280ms ease; }
+      .order-item:hover { transform: translateY(-3px); border-color: rgba(182,91,52,.35); box-shadow: 0 14px 25px rgba(80,55,32,.1); }
+      .action-card { transition: transform 350ms cubic-bezier(.2,.8,.2,1), box-shadow 350ms ease; }
+      .action-card:hover { transform: translateY(-5px); box-shadow: 0 22px 38px rgba(80,55,32,.14); }
+      .js-motion .reveal { opacity: 0; transform: translateY(20px); transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.8,.2,1); }
+      .js-motion .reveal.is-visible { opacity: 1; transform: translateY(0); }
+      @media (max-width: 639px) { input, select, textarea { font-size: 16px !important; } }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+        .js-motion .reveal { opacity: 1; transform: none; }
+      }
+    </style>
+      <link rel="stylesheet" href="interactions.css" />
+  </head>
+  <body class="bg-[#f5efe4] text-[#23392f] antialiased selection:bg-amber-200 selection:text-[#23392f]">
+    <header class="relative z-20 border-b border-[#23392f]/10 bg-[#f5efe4]/95">
+      <nav aria-label="Main navigation" class="mx-auto flex w-full max-w-7xl items-center justify-between gap-1 px-3 py-4 sm:gap-4 sm:px-8 lg:px-12">
+        <a href="home.html" class="flex shrink-0 items-center gap-1.5 sm:gap-2.5" aria-label="Nexovetra home">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#234438] text-[#f5efe4] sm:h-10 sm:w-10"><svg aria-hidden="true" viewBox="0 0 32 32" class="h-6 w-6" fill="none"><path d="M7 12h18l-1.7 13H8.7L7 12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 9c0-2 2-2 2-4M16 9c0-2 2-2 2-4M22 9c0-2 2-2 2-4M25 15h2.2a3.8 3.8 0 0 1 0 7.6h-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="font-serif text-base font-semibold tracking-tight sm:text-2xl">Nexovetra</span>
+        </a>
+        <div class="flex shrink-0 items-center gap-1 text-[11px] font-medium sm:gap-6 sm:text-sm">
+          <a href="home.html" class="nav-link text-[#23392f]/75 transition hover:text-[#b65b34]">Home</a>
+          <a href="menu.html" class="nav-link text-[#23392f]/75 transition hover:text-[#b65b34]">Menu</a>
+          <a href="experience.html" class="nav-link text-[#23392f]/75 transition hover:text-[#b65b34]"><span class="sm:hidden">Story</span><span class="hidden sm:inline">Our Experience</span></a>
+          <a href="order-reservations.html" aria-current="page" class="font-semibold text-[#a44d2c]"><span class="sm:hidden">Order</span><span class="hidden sm:inline">Order &amp; Book</span></a>
+          <a href="visitus.html" class="inline-flex items-center gap-0.5 rounded-full bg-[#234438] px-2 py-2.5 text-[11px] font-semibold text-white transition hover:bg-[#345a49] sm:gap-2 sm:px-5 sm:text-sm"><span class="sm:hidden">Visit</span><span class="hidden sm:inline">Visit us</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="relative overflow-hidden">
+        <div aria-hidden="true" class="pointer-events-none absolute -left-24 top-12 h-72 w-72 rounded-full bg-[#d3a66a]/20 blur-3xl"></div>
+        <div class="mx-auto grid max-w-7xl items-center gap-9 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1fr_.9fr] lg:gap-16 lg:px-12 lg:py-20">
+          <div class="reveal" data-reveal>
+            <p class="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[.28em] text-[#a45a37] sm:text-xs"><span class="h-px w-7 bg-[#a45a37]"></span> Your Nexovetra moment</p>
+            <h1 class="mt-5 font-serif text-5xl leading-[1.02] tracking-[-.04em] sm:text-7xl">Good things,<br /><span class="italic text-[#b65b34]">your way.</span></h1>
+            <p class="mt-5 max-w-lg text-sm leading-7 text-[#536258] sm:text-lg sm:leading-8">Pick up your coffee and something lovely to eat, or save a seat for the people you want to see.</p>
+            <div class="mt-8 grid gap-3 sm:grid-cols-2">
+              <a href="#takeaway" class="action-card group rounded-2xl border border-[#23392f]/10 bg-white/65 p-4 shadow-sm sm:p-5"><span class="text-[10px] font-semibold uppercase tracking-[.2em] text-[#a45a37]">01 / On the go</span><span class="mt-2 flex items-center justify-between font-serif text-xl sm:text-2xl">Order takeaway <span class="text-lg text-[#b65b34] transition-transform group-hover:translate-x-1">→</span></span><span class="mt-1 block text-xs text-[#647168]">Your coffee, ready when you are.</span></a>
+              <a href="#reservation" class="action-card group rounded-2xl border border-[#23392f]/10 bg-white/65 p-4 shadow-sm sm:p-5"><span class="text-[10px] font-semibold uppercase tracking-[.2em] text-[#a45a37]">02 / Stay awhile</span><span class="mt-2 flex items-center justify-between font-serif text-xl sm:text-2xl">Book a table <span class="text-lg text-[#b65b34] transition-transform group-hover:translate-x-1">→</span></span><span class="mt-1 block text-xs text-[#647168]">Make room for a good moment.</span></a>
+            </div>
+          </div>
+          <div class="reveal seat-photo relative mx-auto w-full max-w-xl overflow-hidden rounded-[2rem] bg-[#d6c4a8] shadow-2xl shadow-[#503720]/15" data-reveal>
+            <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1400&q=85" alt="A cozy café table and seat ready for guests" fetchpriority="high" class="h-[300px] w-full object-cover sm:h-[410px] lg:h-[470px]" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#17251d]/55 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-white sm:bottom-7 sm:left-7 sm:right-7"><div><p class="text-[10px] font-semibold uppercase tracking-[.2em] text-white/75">A table with your name on it</p><p class="mt-1 font-serif text-2xl sm:text-3xl">Come as you are.</p></div><span class="hidden h-14 w-14 items-center justify-center rounded-full border border-white/60 bg-white/10 font-serif text-xs leading-4 backdrop-blur-sm sm:flex">stay<br />a little</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="takeaway" aria-labelledby="takeaway-title" class="scroll-mt-4 bg-[#e8ddcb]">
+        <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+          <div class="mb-8 flex flex-col justify-between gap-4 sm:mb-10 sm:flex-row sm:items-end"><div><p class="text-[10px] font-semibold uppercase tracking-[.28em] text-[#a45a37] sm:text-xs">Order takeaway</p><h2 id="takeaway-title" class="mt-3 font-serif text-4xl sm:text-5xl">Your coffee, ready <span class="italic text-[#b65b34]">when you are.</span></h2></div><a href="menu.html" class="inline-flex items-center gap-2 self-start text-sm font-semibold text-[#234438] transition hover:text-[#a44d2c] sm:self-auto">See the full menu <span aria-hidden="true">↗</span></a></div>
+          <div class="grid items-start gap-6 lg:grid-cols-[1.45fr_.75fr] lg:gap-8">
+            <div>
+              <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <label class="relative min-w-0 flex-1"><span class="sr-only">Search takeaway items</span><svg aria-hidden="true" class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#647168]" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.5 3a5.5 5.5 0 1 0 3.46 9.78l3.63 3.63a.75.75 0 1 0 1.06-1.06l-3.63-3.63A5.5 5.5 0 0 0 8.5 3ZM4.5 8.5a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" clip-rule="evenodd"/></svg><input id="order-search" type="search" placeholder="Find coffee, sandwiches, something sweet…" class="h-12 w-full rounded-full border border-[#23392f]/15 bg-white/75 pl-11 pr-4 text-sm text-[#23392f] outline-none placeholder:text-[#849087] focus:border-[#a45a37] focus:ring-2 focus:ring-[#a45a37]/10" /></label>
+                <p id="order-item-count" class="shrink-0 text-xs text-[#647168]" role="status" aria-live="polite"></p>
+              </div>
+              <div id="order-items" class="grid gap-3 sm:grid-cols-2">
+                <p class="col-span-full py-12 text-center text-sm text-[#647168]">Loading takeaway menu…</p>
+              </div>
+            </div>
+
+            <aside class="rounded-3xl bg-[#23392f] p-5 text-[#f5efe4] shadow-xl shadow-[#23392f]/15 sm:p-6 lg:sticky lg:top-6">
+              <div class="flex items-start justify-between gap-3"><div><p class="text-[10px] font-semibold uppercase tracking-[.22em] text-[#ddb68c]">Your takeaway</p><h3 class="mt-1 font-serif text-2xl">Order basket</h3></div><span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-xl" aria-hidden="true">☕</span></div>
+              <div id="cart-items" class="mt-5 space-y-3"><p class="rounded-xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-[#f5efe4]/60">Your basket is waiting for something good.</p></div>
+              <div class="mt-5 border-t border-white/15 pt-4"><div class="flex items-center justify-between text-sm"><span class="text-[#f5efe4]/65">Subtotal</span><span id="cart-subtotal" class="font-semibold">₹0</span></div></div>
+              <form id="takeaway-form" class="mt-5">
+                <label for="pickup-time" class="mb-2 block text-xs font-medium text-[#f5efe4]/85">Choose a pickup time</label>
+                <select id="pickup-time" required class="h-12 w-full rounded-xl border border-white/15 bg-[#182c23] px-3 text-sm text-white outline-none focus:border-[#ddb68c] focus:ring-2 focus:ring-[#ddb68c]/20"><option value="" selected disabled>Select a time</option><option>As soon as possible (about 20 min)</option><option>In about 30 minutes</option><option>In about 45 minutes</option><option>In about 1 hour</option></select>
+                <button id="place-order" type="submit" disabled class="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#ddb68c] px-5 py-3 text-sm font-bold text-[#23392f] transition hover:-translate-y-0.5 hover:bg-[#edcda9] disabled:cursor-not-allowed disabled:opacity-45">Continue on WhatsApp <span aria-hidden="true">↗</span></button>
+              </form>
+              <p class="mt-4 text-[11px] leading-5 text-[#f5efe4]/55">WhatsApp opens with your order prepared. Choose the café’s chat and tap Send; the order is confirmed when the café replies.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="reservation" aria-labelledby="reservation-title" class="scroll-mt-4">
+        <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+          <div class="mb-8 sm:mb-10"><p class="text-[10px] font-semibold uppercase tracking-[.28em] text-[#a45a37] sm:text-xs">Book a table</p><h2 id="reservation-title" class="mt-3 font-serif text-4xl sm:text-5xl">Make room for a <span class="italic text-[#b65b34]">good moment.</span></h2><p class="mt-3 max-w-xl text-sm leading-6 text-[#647168] sm:text-base">Tell us when you’re coming and how many seats to save. We’ll prepare a message for you to send through WhatsApp.</p></div>
+          <div class="grid overflow-hidden rounded-[2rem] bg-[#e8ddcb] shadow-xl shadow-[#503720]/10 lg:grid-cols-[.85fr_1.15fr]">
+            <div class="seat-photo relative min-h-[280px] overflow-hidden bg-[#d6c4a8] lg:min-h-full">
+              <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=85" alt="Warm wooden café seating ready for a relaxed visit" loading="lazy" class="absolute inset-0 h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#17251d]/65 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7"><p class="text-[10px] font-semibold uppercase tracking-[.22em] text-white/75">Book a little breathing room</p><p class="mt-2 max-w-sm font-serif text-3xl leading-tight sm:text-4xl">Your people.<br />Your table. Your time.</p></div>
+              <span class="absolute right-5 top-5 flex h-16 w-16 rotate-6 items-center justify-center rounded-full border border-white/70 bg-[#f5efe4]/20 text-center font-serif text-xs leading-4 text-white backdrop-blur-sm sm:right-7 sm:top-7">good<br />things<br />gather</span>
+            </div>
+
+            <div class="p-5 sm:p-8 lg:p-10">
+              <form id="reservation-form" class="grid gap-4 sm:grid-cols-2">
+                <div class="sm:col-span-2"><label for="guest-name" class="mb-2 block text-sm font-medium text-[#23392f]">Your name</label><input id="guest-name" name="name" type="text" autocomplete="name" required placeholder="How should we address you?" class="h-12 w-full rounded-xl border border-[#23392f]/15 bg-[#fffaf1] px-4 text-sm text-[#23392f] outline-none placeholder:text-[#899188] focus:border-[#a45a37] focus:ring-2 focus:ring-[#a45a37]/10" /></div>
+                <div class="sm:col-span-2"><label for="guest-phone" class="mb-2 block text-sm font-medium text-[#23392f]">Phone number</label><input id="guest-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="Include country code, e.g. +91 98765 43210" class="h-12 w-full rounded-xl border border-[#23392f]/15 bg-[#fffaf1] px-4 text-sm text-[#23392f] outline-none placeholder:text-[#899188] focus:border-[#a45a37] focus:ring-2 focus:ring-[#a45a37]/10" /></div>
+                <div><label for="booking-date" class="mb-2 block text-sm font-medium text-[#23392f]">Date</label><input id="booking-date" name="date" type="date" required class="h-12 w-full rounded-xl border border-[#23392f]/15 bg-[#fffaf1] px-4 text-sm text-[#23392f] outline-none focus:border-[#a45a37] focus:ring-2 focus:ring-[#a45a37]/10" /></div>
+                <div><label for="booking-time" class="mb-2 block text-sm font-medium text-[#23392f]">Time</label><input id="booking-time" name="time" type="time" required class="h-12 w-full rounded-xl border border-[#23392f]/15 bg-[#fffaf1] px-4 text-sm text-[#23392f] outline-none focus:border-[#a45a37] focus:ring-2 focus:ring-[#a45a37]/10" /></div>
+                <div class="sm:col-span-2"><label for="guest-count" class="mb-2 block text-sm font-medium text-[#23392f]">Number of guests</label><select id="guest-count" name="guests" required class="h-12 w-full rounded-xl border border-[#23392f]/15 bg-[#fffaf1] px-4 text-sm text-[#23392f] outline-none focus:border-[#a45a37] focus:ring-2 focus:ring-[#a45a37]/10"><option value="" selected disabled>How many seats?</option><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option><option>7+ guests</option></select></div>
+                <div class="sm:col-span-2"><label for="special-requests" class="mb-2 block text-sm font-medium text-[#23392f]">Special requests <span class="font-normal text-[#647168]">(optional)</span></label><textarea id="special-requests" name="requests" rows="3" placeholder="A high chair, a quiet corner, or anything we should know?" class="w-full resize-y rounded-xl border border-[#23392f]/15 bg-[#fffaf1] px-4 py-3 text-sm text-[#23392f] outline-none placeholder:text-[#899188] focus:border-[#a45a37] focus:ring-2 focus:ring-[#a45a37]/10"></textarea></div>
+                <div class="sm:col-span-2"><button type="submit" class="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#234438] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#345a49]">Prepare reservation on WhatsApp <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">↗</span></button><p id="reservation-status" role="status" aria-live="polite" class="mt-3 hidden rounded-xl border border-[#47734f]/20 bg-[#e4eee0] px-4 py-3 text-xs leading-5 text-[#315b38]"></p></div>
+              </form>
+              <p class="mt-4 text-[11px] leading-5 text-[#647168]">This sends a reservation request, not an instant booking. Your table is reserved after the café confirms with you.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-[#23392f]/10 bg-white/35"><div class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-xs leading-5 text-[#647168] sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12"><p>Menu items and prices shown here are sample content; please confirm current availability with the café.</p><a href="visitus.html" class="shrink-0 font-semibold text-[#234438] hover:text-[#a44d2c]">Location &amp; contact ↗</a></div></section>
+    </main>
+
+    <footer class="bg-[#23392f] text-[#f5efe4]"><div class="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 md:grid-cols-3 lg:px-12"><div><a href="home.html" class="font-serif text-2xl">Nexovetra</a><p class="mt-2 text-sm text-[#f5efe4]/65">Coffee · Food · Connections</p><a href="visitus.html" class="mt-3 inline-flex text-sm text-[#ddb68c] hover:text-white">Location &amp; contact ↗</a></div><div><p class="text-[10px] font-semibold uppercase tracking-[.2em] text-[#ddb68c]">Company</p><div class="mt-3 grid gap-2 text-sm text-[#f5efe4]/75"><a href="careers.html" class="hover:text-white">Careers</a><a href="cafe-team.html" class="hover:text-white">Our café team</a><a href="brew-guide.html" class="hover:text-white">Brew guide</a><a href="visitus.html" class="hover:text-white">Contact us</a></div></div><div><p class="text-[10px] font-semibold uppercase tracking-[.2em] text-[#ddb68c]">Explore &amp; policies</p><div class="mt-3 grid gap-2 text-sm text-[#f5efe4]/75"><a href="home.html" class="hover:text-white">Home</a><a href="menu.html" class="hover:text-white">Menu</a><a href="experience.html" class="hover:text-white">Our Experience</a><a href="policies.html" class="hover:text-white">Policies &amp; help</a></div></div></div><div class="border-t border-white/10 px-5 py-4 text-center text-xs text-[#f5efe4]/45"><span class="mb-2 block text-xs leading-5 text-[#f5efe4]/65">This website is an educational project imagining a future café where coffee, technology, and community grow together.</span>© 2026 Nexovetra Café · Made for slow sips and good company.</div></footer>
+
+    <script>
+      const takeawayItems = [
+        { id: 'cappuccino', name: 'Cappuccino', description: 'Espresso under a cloud of silky foam.', price: 180, category: 'Hot coffee', image: 'photo-1495474472287-4d71bcdd2085', vegetarian: true, bestseller: true },
+        { id: 'flat-white', name: 'Flat White', description: 'Velvety microfoam, a little stronger by nature.', price: 190, category: 'Hot coffee', image: 'photo-1495474472287-4d71bcdd2085', vegetarian: true },
+        { id: 'jaggery-latte', name: 'Velvet Jaggery Latte', description: 'Silky milk, espresso, and house jaggery caramel.', price: 240, category: 'Signature', image: 'photo-1517701604599-bb29b565090c', vegetarian: true, bestseller: true },
+        { id: 'cold-brew', name: 'Classic Cold Brew', description: 'Slow-steeped for 18 hours. Smooth and refreshing.', price: 190, category: 'Cold coffee', image: 'photo-1461023058943-07fcbe16d735', vegetarian: true },
+        { id: 'masala-chai', name: 'Masala Chai', description: 'Black tea with milk and warming spices.', price: 120, category: 'Tea', image: 'photo-1544787219-7f47ccb76574', vegetarian: true },
+        { id: 'bombay-toastie', name: 'Bombay Toastie', description: 'Potato, chutney, tomato, and a little green chilli.', price: 220, category: 'Snacks', image: 'photo-1553909489-cd47e0ef937f', vegetarian: true, bestseller: true },
+        { id: 'paneer-sandwich', name: 'Pesto Paneer Sandwich', description: 'Grilled paneer, basil pesto, and melted cheese.', price: 260, category: 'Snacks', image: 'photo-1553909489-cd47e0ef937f', vegetarian: true },
+        { id: 'chicken-panini', name: 'Chicken Pesto Panini', description: 'Grilled chicken, basil pesto, and mozzarella.', price: 310, category: 'Snacks', image: 'photo-1553909489-cd47e0ef937f', vegetarian: false },
+        { id: 'croissant', name: 'Butter Croissant', description: 'Flaky, golden layers baked fresh each morning.', price: 160, category: 'Bakery', image: 'photo-1555507036-ab1f4038808a', vegetarian: true },
+        { id: 'truffle-cake', name: 'Chocolate Truffle Cake', description: 'Deep cocoa, soft crumb, glossy ganache.', price: 220, category: 'Desserts', image: 'photo-1578985545062-69928b1d9587', vegetarian: true, bestseller: true }
+      ];
+
+      const cart = new Map();
+      const productGrid = document.getElementById('order-items');
+      const cartList = document.getElementById('cart-items');
+      const searchInput = document.getElementById('order-search');
+      const orderCount = document.getElementById('order-item-count');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      const placeOrderButton = document.getElementById('place-order');
+
+      function buildProduct(item) {
+        const card = document.createElement('article');
+        card.className = 'order-item relative rounded-2xl border border-[#23392f]/10 bg-[#f9f6ef] p-3';
+        card.dataset.search = `${item.name} ${item.description} ${item.category}`.toLowerCase();
+        card.dataset.id = item.id;
+
+        const layout = document.createElement('div');
+        layout.className = 'flex gap-3';
+        const imageWrap = document.createElement('div');
+        imageWrap.className = 'relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-[#e8ddcb]';
+        const img = document.createElement('img');
+        img.src = `https://images.unsplash.com/${item.image}?auto=format&fit=crop&w=400&q=75`;
+        img.alt = item.name;
+        img.loading = 'lazy';
+        img.className = 'h-full w-full object-cover';
+        imageWrap.append(img);
+        if (item.bestseller) {
+          const badge = document.createElement('span');
+          badge.className = 'absolute left-1 top-1 rounded-full bg-[#fff4da] px-2 py-1 text-[8px] font-bold uppercase tracking-wide text-[#a44d2c]';
+          badge.textContent = 'Popular';
+          imageWrap.append(badge);
+        }
+
+        const info = document.createElement('div');
+        info.className = 'min-w-0 flex-1';
+        const heading = document.createElement('div');
+        heading.className = 'flex items-start justify-between gap-2';
+        const name = document.createElement('h3');
+        name.className = 'font-serif text-lg leading-5 text-[#23392f]';
+        name.textContent = item.name;
+        const price = document.createElement('span');
+        price.className = 'shrink-0 text-xs font-semibold text-[#a44d2c]';
+        price.textContent = `₹${item.price}`;
+        heading.append(name, price);
+        const description = document.createElement('p');
+        description.className = 'mt-1.5 line-clamp-2 text-[11px] leading-4 text-[#647168]';
+        description.textContent = item.description;
+        const meta = document.createElement('div');
+        meta.className = 'mt-2 flex items-center gap-2';
+        const veg = document.createElement('span');
+        veg.className = `h-2.5 w-2.5 rounded-[2px] border p-[2px] ${item.vegetarian ? 'border-[#47734f]' : 'border-[#b65b34]'}`;
+        veg.setAttribute('aria-label', item.vegetarian ? 'Vegetarian' : 'Non-vegetarian');
+        const dot = document.createElement('span');
+        dot.className = `block h-full w-full rounded-full ${item.vegetarian ? 'bg-[#47734f]' : 'bg-[#b65b34]'}`;
+        veg.append(dot);
+        const category = document.createElement('span');
+        category.className = 'text-[10px] text-[#647168]';
+        category.textContent = item.vegetarian ? item.category : `${item.category} · Non-veg`;
+        meta.append(veg, category);
+        info.append(heading, description, meta);
+        layout.append(imageWrap, info);
+
+        const controls = document.createElement('div');
+        controls.className = 'mt-3 flex items-center justify-between border-t border-[#23392f]/10 pt-3';
+        const qtyLabel = document.createElement('label');
+        qtyLabel.className = 'flex items-center gap-2 text-[10px] font-medium text-[#647168]';
+        qtyLabel.textContent = 'Qty';
+        const qtyInput = document.createElement('input');
+        qtyInput.type = 'number';
+        qtyInput.min = '1';
+        qtyInput.max = '20';
+        qtyInput.value = '1';
+        qtyInput.inputMode = 'numeric';
+        qtyInput.setAttribute('aria-label', `Quantity for ${item.name}`);
+        qtyInput.className = 'h-8 w-14 rounded-lg border border-[#23392f]/15 bg-white px-2 text-center text-xs text-[#23392f] outline-none focus:border-[#a45a37]';
+        qtyLabel.append(qtyInput);
+        const addButton = document.createElement('button');
+        addButton.type = 'button';
+        addButton.dataset.addItem = item.id;
+        addButton.className = 'rounded-full bg-[#234438] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#345a49] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a45a37]';
+        addButton.textContent = 'Add to order';
+        controls.append(qtyLabel, addButton);
+        card.append(layout, controls);
+        return card;
+      }
+
+      function renderProducts(query = '') {
+        const normalized = query.trim().toLowerCase();
+        productGrid.replaceChildren();
+        const matches = takeawayItems.filter((item) => `${item.name} ${item.description} ${item.category}`.toLowerCase().includes(normalized));
+        matches.forEach((item) => productGrid.append(buildProduct(item)));
+        if (!matches.length) {
+          const message = document.createElement('p');
+          message.className = 'col-span-full rounded-2xl border border-dashed border-[#23392f]/20 px-5 py-10 text-center text-sm text-[#647168]';
+          message.textContent = 'No items found. Try another search or browse the full menu.';
+          productGrid.append(message);
+        }
+        orderCount.textContent = `${matches.length} takeaway ${matches.length === 1 ? 'item' : 'items'}`;
+      }
+
+      function renderCart() {
+        cartList.replaceChildren();
+        if (cart.size === 0) {
+          const empty = document.createElement('p');
+          empty.className = 'rounded-xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-[#f5efe4]/60';
+          empty.textContent = 'Your basket is waiting for something good.';
+          cartList.append(empty);
+        }
+
+        let subtotal = 0;
+        cart.forEach((entry, id) => {
+          subtotal += entry.item.price * entry.quantity;
+          const row = document.createElement('div');
+          row.className = 'rounded-xl border border-white/10 bg-white/5 p-3';
+          const top = document.createElement('div');
+          top.className = 'flex items-start justify-between gap-3';
+          const name = document.createElement('p');
+          name.className = 'text-sm font-medium text-white';
+          name.textContent = entry.item.name;
+          const lineTotal = document.createElement('span');
+          lineTotal.className = 'text-xs font-semibold text-[#ddb68c]';
+          lineTotal.textContent = `₹${entry.item.price * entry.quantity}`;
+          top.append(name, lineTotal);
+          const bottom = document.createElement('div');
+          bottom.className = 'mt-3 flex items-center justify-between';
+          const controls = document.createElement('div');
+          controls.className = 'flex items-center gap-2';
+          const makeQtyButton = (label, action) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.dataset.cartAction = action;
+            button.dataset.cartId = id;
+            button.setAttribute('aria-label', `${action === 'decrease' ? 'Decrease' : 'Increase'} ${entry.item.name} quantity`);
+            button.className = 'flex h-7 w-7 items-center justify-center rounded-full border border-white/20 text-sm text-white transition hover:bg-white/15';
+            button.textContent = label;
+            return button;
+          };
+          const quantity = document.createElement('span');
+          quantity.className = 'min-w-5 text-center text-xs text-[#f5efe4]/75';
+          quantity.textContent = String(entry.quantity);
+          controls.append(makeQtyButton('−', 'decrease'), quantity, makeQtyButton('+', 'increase'));
+          const remove = document.createElement('button');
+          remove.type = 'button';
+          remove.dataset.cartAction = 'remove';
+          remove.dataset.cartId = id;
+          remove.className = 'text-[10px] text-[#f5efe4]/55 underline underline-offset-2 hover:text-white';
+          remove.textContent = 'Remove';
+          bottom.append(controls, remove);
+          row.append(top, bottom);
+          cartList.append(row);
+        });
+        subtotalEl.textContent = `₹${subtotal}`;
+        placeOrderButton.disabled = cart.size === 0;
+      }
+
+      productGrid.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-add-item]');
+        if (!button) return;
+        const item = takeawayItems.find((product) => product.id === button.dataset.addItem);
+        const quantityInput = button.closest('article').querySelector('input[type="number"]');
+        const quantity = Math.max(1, Math.min(20, Number.parseInt(quantityInput.value, 10) || 1));
+        const current = cart.get(item.id);
+        cart.set(item.id, { item, quantity: Math.min(99, (current?.quantity || 0) + quantity) });
+        quantityInput.value = '1';
+        const previousText = button.textContent;
+        button.textContent = 'Added ✓';
+        window.setTimeout(() => { button.textContent = previousText; }, 1000);
+        renderCart();
+      });
+
+      cartList.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-cart-action]');
+        if (!button) return;
+        const id = button.dataset.cartId;
+        const entry = cart.get(id);
+        if (!entry) return;
+        if (button.dataset.cartAction === 'remove' || (button.dataset.cartAction === 'decrease' && entry.quantity <= 1)) cart.delete(id);
+        else if (button.dataset.cartAction === 'decrease') cart.set(id, { ...entry, quantity: entry.quantity - 1 });
+        else cart.set(id, { ...entry, quantity: entry.quantity + 1 });
+        renderCart();
+      });
+
+      searchInput.addEventListener('input', () => renderProducts(searchInput.value));
+      renderProducts();
+      renderCart();
+
+      function openWhatsApp(message) {
+        // Add the café's international phone digits here to open a direct business chat.
+        // Leaving it blank uses WhatsApp's pre-filled-message recipient chooser.
+        const cafeWhatsAppNumber = '';
+        const encodedMessage = encodeURIComponent(message);
+        const url = cafeWhatsAppNumber
+          ? `https://wa.me/${cafeWhatsAppNumber}?text=${encodedMessage}`
+          : `https://wa.me/?text=${encodedMessage}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+
+      document.getElementById('takeaway-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (cart.size === 0) return;
+        const pickupTime = document.getElementById('pickup-time').value;
+        const lines = ['Hello Nexovetra! I’d like to place a takeaway order:', ''];
+        let total = 0;
+        cart.forEach((entry) => {
+          const line = entry.item.price * entry.quantity;
+          total += line;
+          lines.push(`• ${entry.item.name} × ${entry.quantity} — ₹${line}`);
+        });
+        lines.push('', `Subtotal: ₹${total}`, `Pickup: ${pickupTime}`, '', 'Please let me know when it is confirmed.');
+        openWhatsApp(lines.join('\n'));
+      });
+
+      const bookingDate = document.getElementById('booking-date');
+      const today = new Date();
+      bookingDate.min = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+      document.getElementById('reservation-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        if (!form.reportValidity()) return;
+        const data = new FormData(form);
+        const message = [
+          'Hello Nexovetra! I’d like to request a table:',
+          '',
+          `Name: ${data.get('name')}`,
+          `Phone: ${data.get('phone')}`,
+          `Date: ${data.get('date')}`,
+          `Time: ${data.get('time')}`,
+          `Guests: ${data.get('guests')}`,
+          `Special requests: ${data.get('requests') || 'None'}`,
+          '',
+          'Please let me know if the table is available.'
+        ].join('\n');
+        openWhatsApp(message);
+        const status = document.getElementById('reservation-status');
+        status.textContent = 'WhatsApp is opening with your request ready. Your reservation is confirmed only after the café replies.';
+        status.classList.remove('hidden');
+      });
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('js-motion');
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element));
+      }
+    </script>
+  </body>
+</html>

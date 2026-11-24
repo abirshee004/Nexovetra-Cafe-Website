@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5efe4" />
+    <meta name="description" content="Explore the Nexovetra Café menu: coffee, tea, momos, noodles, chicken, pizza, chef’s specials, and something sweet." />
+    <title>Our Menu — Nexovetra Café</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; min-width: 320px; overflow-x: hidden; }
+      .menu-scroll { scrollbar-width: none; }
+      .menu-scroll::-webkit-scrollbar { display: none; }
+      .category-chip[aria-pressed="true"] { border-color: #234438; background: #234438; color: #fff; }
+      @keyframes appear { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      .menu-card { animation: appear 280ms ease both; }
+      .menu-card img { transition: transform 650ms cubic-bezier(.2,.7,.2,1), filter 500ms ease; }
+      .menu-card:hover img { transform: scale(1.07); filter: saturate(1.13) contrast(1.02); }
+      .menu-card .menu-photo { overflow: hidden; }
+      .bestseller-tag { transition: transform 300ms ease, background-color 300ms ease; }
+      .menu-card:hover .bestseller-tag { transform: translateY(3px) rotate(-2deg); background-color: #fff; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+    </style>
+      <link rel="stylesheet" href="interactions.css" />
+  </head>
+  <body class="bg-[#f5efe4] text-[#23392f] antialiased selection:bg-amber-200 selection:text-[#23392f]">
+    <header class="relative z-20 border-b border-[#23392f]/10 bg-[#f5efe4]/95">
+      <nav aria-label="Main navigation" class="mx-auto flex w-full max-w-7xl items-center justify-between gap-1 px-3 py-4 sm:gap-4 sm:px-8 lg:px-12">
+        <a href="home.html" class="flex shrink-0 items-center gap-1.5 sm:gap-2.5" aria-label="Nexovetra home">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#234438] text-[#f5efe4] sm:h-10 sm:w-10"><svg aria-hidden="true" viewBox="0 0 32 32" class="h-6 w-6" fill="none"><path d="M7 12h18l-1.7 13H8.7L7 12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 9c0-2 2-2 2-4M16 9c0-2 2-2 2-4M22 9c0-2 2-2 2-4M25 15h2.2a3.8 3.8 0 0 1 0 7.6h-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="font-serif text-base font-semibold tracking-tight sm:text-2xl">Nexovetra</span>
+        </a>
+        <div class="flex shrink-0 items-center gap-1 text-[11px] font-medium sm:gap-6 sm:text-sm">
+          <a href="home.html" class="text-[#23392f]/75 transition hover:text-[#b65b34]">Home</a>
+          <a href="menu.html" aria-current="page" class="font-semibold text-[#a44d2c]">Menu</a>
+          <a href="experience.html" class="text-[#23392f]/75 transition hover:text-[#b65b34]"><span class="sm:hidden">Story</span><span class="hidden sm:inline">Our Experience</span></a>
+          <a href="order-reservations.html" class="text-[#23392f]/75 transition hover:text-[#b65b34]"><span class="sm:hidden">Order</span><span class="hidden sm:inline">Order &amp; Book</span></a>
+          <a href="visitus.html" class="inline-flex items-center gap-0.5 rounded-full bg-[#234438] px-2 py-2.5 text-[11px] font-semibold text-white transition hover:bg-[#345a49] sm:gap-2 sm:px-5 sm:text-sm"><span class="sm:hidden">Visit</span><span class="hidden sm:inline">Visit us</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="relative overflow-hidden border-b border-[#23392f]/10">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(182,91,52,.12),transparent_36%),radial-gradient(ellipse_at_8%_90%,rgba(35,68,56,.08),transparent_35%)]"></div>
+        <div class="relative mx-auto grid max-w-7xl items-center gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1.2fr_.8fr] lg:gap-16 lg:px-12 lg:py-20">
+          <div>
+            <p class="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[.28em] text-[#a45a37] sm:text-xs"><span class="h-px w-7 bg-[#a45a37]"></span> Made for your kind of moment</p>
+            <h1 class="mt-5 max-w-3xl font-serif text-5xl leading-[1.02] tracking-[-.04em] sm:text-7xl">A little sip.<br /><span class="italic text-[#b65b34]">A lot to love.</span></h1>
+            <p class="mt-5 max-w-xl text-sm leading-7 text-[#536258] sm:text-lg sm:leading-8">From first coffee to last little treat, find something lovely for the moment you’re in.</p>
+            <a href="#menu-items" class="mt-7 inline-flex items-center gap-3 rounded-full bg-[#234438] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#345a49]">Browse the menu <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="relative mx-auto w-full max-w-md lg:ml-auto">
+            <div class="absolute -right-3 -top-3 h-20 w-20 rounded-full border border-[#b65b34]/30 sm:-right-5 sm:-top-5 sm:h-28 sm:w-28"></div>
+            <div class="relative h-64 overflow-hidden rounded-[1.75rem] bg-[#d6c4a8] shadow-xl shadow-[#503720]/10 sm:h-80 sm:rounded-[2rem]">
+              <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85" alt="A freshly brewed coffee ready to enjoy" fetchpriority="high" class="h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#17251d]/45 via-transparent to-transparent"></div>
+              <p class="absolute bottom-5 left-5 font-serif text-2xl italic text-white sm:bottom-7 sm:left-7 sm:text-3xl">Your next favorite is here.</p>
+            </div>
+            <span class="absolute -bottom-4 left-5 rounded-full border border-white/70 bg-[#fffaf1] px-4 py-2 text-xs font-medium text-[#536258] shadow-md sm:left-8">Coffee · Food · Connections</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu-items" class="mx-auto w-full max-w-7xl px-5 pb-20 pt-10 sm:px-8 sm:pb-24 sm:pt-14 lg:px-12">
+        <div class="mb-7 flex flex-col justify-between gap-5 sm:mb-9 lg:flex-row lg:items-end">
+          <div><p class="text-[10px] font-semibold uppercase tracking-[.28em] text-[#a45a37] sm:text-xs">Take your pick</p><h2 class="mt-2 font-serif text-4xl sm:text-5xl">The whole <span class="italic text-[#b65b34]">good thing.</span></h2></div>
+          <div class="relative w-full lg:max-w-xl">
+            <div class="flex w-full gap-2">
+              <label class="relative min-w-0 flex-1">
+                <span class="sr-only">Search the menu</span>
+                <svg aria-hidden="true" class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#647168]" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.5 3a5.5 5.5 0 1 0 3.46 9.78l3.63 3.63a.75.75 0 1 0 1.06-1.06l-3.63-3.63A5.5 5.5 0 0 0 8.5 3ZM4.5 8.5a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" clip-rule="evenodd"/></svg>
+                <input id="menu-search" type="search" placeholder="Search coffee, food, treats…" class="h-12 w-full rounded-full border border-[#23392f]/15 bg-white/70 pl-11 pr-4 text-sm text-[#23392f] outline-none placeholder:text-[#849087] focus:border-[#a45a37] focus:ring-2 focus:ring-[#a45a37]/10" />
+              </label>
+              <button id="filter-toggle" type="button" aria-label="Open menu filters" aria-expanded="false" aria-controls="filter-panel" class="relative inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#23392f]/15 bg-white/75 text-[#234438] transition hover:-translate-y-0.5 hover:border-[#a45a37] hover:bg-[#fffaf1] focus:outline-none focus:ring-2 focus:ring-[#a45a37]/30">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3m4 0h9"/><circle cx="15" cy="7" r="2" fill="#f5efe4"/><circle cx="9" cy="17" r="2" fill="#f5efe4"/></svg>
+                <span id="filter-active-dot" class="absolute right-2 top-2 hidden h-2 w-2 rounded-full bg-[#b65b34]"></span>
+              </button>
+            </div>
+            <section id="filter-panel" aria-labelledby="filter-panel-title" class="absolute right-0 top-[calc(100%+0.75rem)] z-30 hidden w-[min(22rem,calc(100vw-2.5rem))] rounded-3xl border border-[#23392f]/10 bg-[#fffaf1] p-5 shadow-2xl shadow-[#503720]/15">
+              <div class="mb-4 flex items-start justify-between gap-3">
+                <div><p class="text-[10px] font-semibold uppercase tracking-[.2em] text-[#a45a37]">Find your favorite</p><h3 id="filter-panel-title" class="mt-1 font-serif text-2xl">Menu filters</h3></div>
+                <button id="filter-close" type="button" aria-label="Close menu filters" class="flex h-8 w-8 items-center justify-center rounded-full text-xl text-[#647168] transition hover:bg-[#e8ddcb]">×</button>
+              </div>
+              <label for="dietary-filter" class="block text-xs font-semibold text-[#536258]">Dietary preference</label>
+              <select id="dietary-filter" class="mt-2 h-11 w-full rounded-xl border border-[#23392f]/15 bg-white px-3 text-sm text-[#23392f] outline-none focus:border-[#a45a37] focus:ring-2 focus:ring-[#a45a37]/10">
+                <option value="all">All items</option>
+                <option value="veg">Vegetarian</option>
+                <option value="nonveg">Non-vegetarian</option>
+              </select>
+              <label class="mt-4 flex cursor-pointer items-center gap-3 rounded-xl bg-white px-3 py-3 text-sm text-[#536258]">
+                <input id="bestseller-filter" type="checkbox" class="h-4 w-4 accent-[#234438]" />
+                <span>Show bestsellers only</span>
+              </label>
+              <label for="price-limit" class="mt-4 block">
+                <span class="flex items-center justify-between text-xs font-semibold text-[#536258]">Maximum price <strong id="price-limit-label" class="text-[#a44d2c]">₹500</strong></span>
+                <input id="price-limit" type="range" min="100" max="500" step="10" value="500" class="mt-2 h-8 w-full cursor-pointer accent-[#234438]" />
+              </label>
+              <label for="sort-menu" class="mt-3 block text-xs font-semibold text-[#536258]">Sort items</label>
+              <select id="sort-menu" class="mt-2 h-11 w-full rounded-xl border border-[#23392f]/15 bg-white px-3 text-sm text-[#23392f] outline-none focus:border-[#a45a37] focus:ring-2 focus:ring-[#a45a37]/10">
+                <option value="recommended">Recommended</option>
+                <option value="price-low">Price: low to high</option>
+                <option value="price-high">Price: high to low</option>
+                <option value="name">Name: A to Z</option>
+              </select>
+              <div class="mt-5 flex gap-2">
+                <button id="reset-filters" type="button" class="h-11 flex-1 rounded-full border border-[#23392f]/15 px-4 text-sm font-semibold text-[#536258] transition hover:bg-white">Reset</button>
+                <button id="apply-filters" type="button" class="h-11 flex-1 rounded-full bg-[#234438] px-4 text-sm font-semibold text-white transition hover:bg-[#345a49]">Apply filters</button>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="menu-scroll sticky top-0 z-10 -mx-5 mb-8 overflow-x-auto border-y border-[#23392f]/10 bg-[#f5efe4]/95 px-5 py-3 backdrop-blur sm:static sm:mx-0 sm:mb-10 sm:overflow-visible sm:border-0 sm:bg-transparent sm:p-0">
+          <div id="category-filters" role="group" aria-label="Filter menu by category" class="flex w-max min-w-full gap-2 sm:w-auto sm:min-w-0 sm:flex-wrap">
+            <button type="button" data-filter="all" aria-pressed="true" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition sm:text-sm">Everything</button>
+            <button type="button" data-filter="hot" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Hot coffee</button>
+            <button type="button" data-filter="cold" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Cold coffee</button>
+            <button type="button" data-filter="signature" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Signature drinks</button>
+            <button type="button" data-filter="tea" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Tea & refreshments</button>
+            <button type="button" data-filter="snacks" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Snacks & sandwiches</button>
+            <button type="button" data-filter="desserts" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Desserts & bakery</button>
+            <button type="button" data-filter="chicken" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Chicken</button>
+            <button type="button" data-filter="fried" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Fried favourites</button>
+            <button type="button" data-filter="pizza" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Pizza</button>
+            <button type="button" data-filter="steam" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Steam &amp; momos</button>
+            <button type="button" data-filter="noodles" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Noodles</button>
+            <button type="button" data-filter="chef" aria-pressed="false" class="category-chip rounded-full border border-[#23392f]/15 bg-white/60 px-4 py-2.5 text-xs font-semibold text-[#536258] transition hover:border-[#234438] hover:text-[#234438] sm:text-sm">Chef’s specials</button>
+          </div>
+        </div>
+
+        <p id="result-count" role="status" aria-live="polite" class="mb-5 text-xs text-[#647168]"></p>
+        <div id="menu-sections" class="space-y-12 sm:space-y-16">
+          <div class="py-16 text-center text-sm text-[#647168]">Loading the menu…</div>
+        </div>
+        <div id="no-results" class="hidden rounded-3xl border border-dashed border-[#23392f]/20 bg-white/40 px-6 py-14 text-center">
+          <p class="font-serif text-2xl text-[#23392f]">Nothing on the menu matches that.</p>
+          <p class="mt-2 text-sm text-[#647168]">Try another search or show all categories.</p>
+          <button id="clear-search" type="button" class="mt-5 rounded-full bg-[#234438] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#345a49]">Clear filters</button>
+        </div>
+
+        <p class="mt-12 rounded-2xl bg-[#e8ddcb] px-5 py-4 text-xs leading-6 text-[#536258] sm:text-sm"><span class="font-semibold text-[#23392f]">A little note:</span> Menu and prices are a sample café menu and may change with the season. Please tell our team about any allergies before ordering.</p>
+      </section>
+    </main>
+
+    <footer class="bg-[#23392f] text-[#f5efe4]">
+      <div class="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 sm:py-14 md:grid-cols-3 lg:px-12">
+        <div><a href="home.html" class="font-serif text-3xl">Nexovetra</a><p class="mt-2 text-sm text-[#f5efe4]/65">A little pause. A better cup. A beautiful moment.</p><a href="visitus.html" class="mt-4 inline-flex text-sm font-semibold text-[#ddb68c] hover:text-white">Find us in Mumbai ↗</a></div>
+        <div><p class="text-[10px] font-semibold uppercase tracking-[.2em] text-[#ddb68c]">Company</p><nav aria-label="Company links" class="mt-3 grid gap-2 text-sm text-[#f5efe4]/75"><a href="careers.html" class="hover:text-white">Careers</a><a href="cafe-team.html" class="hover:text-white">Our café team</a><a href="brew-guide.html" class="hover:text-white">Brew guide</a><a href="visitus.html" class="hover:text-white">Contact us</a></nav></div>
+        <div><p class="text-[10px] font-semibold uppercase tracking-[.2em] text-[#ddb68c]">Explore &amp; policies</p><nav aria-label="Explore and policy links" class="mt-3 grid gap-2 text-sm text-[#f5efe4]/75"><a href="home.html" class="hover:text-white">Home</a><a href="experience.html" class="hover:text-white">Our Experience</a><a href="order-reservations.html" class="hover:text-white">Order &amp; Book</a><a href="policies.html" class="hover:text-white">Policies &amp; help</a></nav></div>
+      </div>
+      <div class="border-t border-white/10"><p class="mx-auto max-w-7xl px-5 py-4 text-xs text-[#f5efe4]/45 sm:px-8 lg:px-12"><span class="mb-2 block text-xs leading-5 text-[#f5efe4]/65">This website is an educational project imagining a future café where coffee, technology, and community grow together.</span>© 2026 Nexovetra Café · Made for slow sips and good company.</p></div>
+    </footer>
+
+    <script>
+      const categories = [
+        { id: 'hot', title: 'Hot Coffee', note: 'A warm cup, made just for you.', emoji: '☕' },
+        { id: 'cold', title: 'Cold Coffee', note: 'Cool, creamy, and easy-going.', emoji: '❄' },
+        { id: 'signature', title: 'Signature Drinks', note: 'Colorful house specials, with no ordinary sips.', emoji: '✳' },
+        { id: 'tea', title: 'Tea & Refreshments', note: 'Gentle sips for a slower moment.', emoji: '🍵' },
+        { id: 'snacks', title: 'Snacks & Sandwiches', note: 'Freshly made, warm, and ready to share.', emoji: '🥪' },
+        { id: 'desserts', title: 'Desserts & Bakery', note: 'Save a little room for something sweet.', emoji: '🥐' },
+        { id: 'chicken', title: 'Chicken', note: 'Crispy, savory favorites for a hearty bite.', emoji: '🍗' },
+        { id: 'fried', title: 'Fried Favourites', note: 'Golden, crunchy, and best shared.', emoji: '🍟' },
+        { id: 'pizza', title: 'Pizza', note: 'Fresh from the oven, made for the table.', emoji: '🍕' },
+        { id: 'steam', title: 'Steam & Momos', note: 'Soft, freshly steamed bites with bright dipping sauces.', emoji: '♨' },
+        { id: 'noodles', title: 'Noodles', note: 'Wok-tossed bowls with a little Nexovetra flair.', emoji: '🍜' },
+        { id: 'chef', title: 'Chef’s Specials', note: 'House favorites for the moments you want something different.', emoji: '✦' }
+      ];
+      const items = [
+        { category: 'hot', name: 'Espresso', description: 'A short, rich shot with a smooth crema.', price: 130, vegetarian: true, image: 'photo-1495474472287-4d71bcdd2085' },
+        { category: 'hot', name: 'Americano', description: 'Our espresso lengthened with hot water.', price: 150, vegetarian: true, image: 'photo-1442512595331-e89e73853f31' },
+        { category: 'hot', name: 'Cappuccino', description: 'Double espresso under a cloud of silky foam.', price: 180, vegetarian: true, bestseller: true, image: 'photo-1509042239860-f550ce710b93' },
+        { category: 'hot', name: 'Flat White', description: 'Velvety microfoam, a little stronger by nature.', price: 190, vegetarian: true, image: 'photo-1511537190424-bbbab87ac5eb' },
+        { category: 'hot', name: 'Vanilla Bean Latte', description: 'Espresso, steamed milk, and real vanilla.', price: 210, vegetarian: true, image: 'photo-1512568400610-62da28bc8a13' },
+        { category: 'cold', name: 'Iced Americano', description: 'Bright espresso poured over plenty of ice.', price: 170, vegetarian: true, image: 'photo-1461023058943-07fcbe16d735' },
+        { category: 'cold', name: 'Classic Cold Brew', description: 'Slow-steeped for 18 hours, wonderfully smooth.', price: 190, vegetarian: true, bestseller: true, image: 'photo-1517701604599-bb29b565090c' },
+        { category: 'cold', name: 'Iced Vanilla Latte', description: 'Chilled espresso, milk, and a hint of vanilla.', price: 220, vegetarian: true, image: 'photo-1511920170033-f8396924c348' },
+        { category: 'cold', name: 'Mocha Frappe', description: 'Blended coffee, cocoa, and a cool finish.', price: 250, vegetarian: true, image: 'photo-1518057111178-44a106bad636' },
+        { category: 'signature', name: 'Mango Matcha Fizz', description: 'Earthy matcha, ripe mango, and a bright sparkling finish.', price: 250, vegetarian: true, bestseller: true, image: 'https://siptherapy.in/_next/image?q=75&url=%2Fdrink-mango-matcha.png&w=3840' },
+        { category: 'signature', name: 'Rose & Cardamom Cooler', description: 'A floral, lightly spiced cooler with lemon and crushed ice.', price: 220, vegetarian: true, image: 'photo-1544145945-f90425340c7e' },
+        { category: 'signature', name: 'Kokum Lime Spritz', description: 'Tangy kokum, fresh lime, mint, and sparkling water.', price: 210, vegetarian: true, image: 'photo-1534353473418-4cfa6c56fd38' },
+        { category: 'signature', name: 'Saffron Hot Chocolate', description: 'Slow-sipped cocoa with a soft saffron aroma.', price: 230, vegetarian: true, image: 'photo-1515823064-d6e0c04616a7' },
+        { category: 'tea', name: 'Masala Chai', description: 'Black tea simmered with milk and warming spices.', price: 120, vegetarian: true, image: 'photo-1544787219-7f47ccb76574' },
+        { category: 'tea', name: 'Earl Grey', description: 'Fragrant black tea with a delicate bergamot finish.', price: 150, vegetarian: true, image: 'photo-1576092768241-dec231879fc3' },
+        { category: 'tea', name: 'Matcha Latte', description: 'Smooth Japanese green tea with your choice of milk.', price: 240, vegetarian: true, image: 'photo-1597481499750-3e6b22637e12' },
+        { category: 'tea', name: 'Hibiscus Iced Tea', description: 'A ruby-red, gently tart refresher served chilled.', price: 170, vegetarian: true, image: 'photo-1622990628493-249cca6603e9' },
+        { category: 'tea', name: 'Jaggery Tea', description: 'A full, comforting cup of chai with earthy jaggery on the side.', price: 140, vegetarian: true, bestseller: true, image: 'https://images.healthshots.com/healthshots/en/uploads/2023/01/08125853/jaggery-tea-1600x900.jpg' },
+        { category: 'snacks', name: 'Bombay Toastie', description: 'Potato, chutney, tomato, and a little green chilli.', price: 220, vegetarian: true, bestseller: true, image: 'photo-1716535233357-822bcc293573' },
+        { category: 'snacks', name: 'Avocado Feta Toast', description: 'Smashed avocado, whipped feta, lemon, and seeds.', price: 280, vegetarian: true, image: 'photo-1528735602780-2552fd46c7af' },
+        { category: 'snacks', name: 'Pesto Paneer Sandwich', description: 'Grilled paneer, basil pesto, and melted cheese.', price: 260, vegetarian: true, image: 'photo-1521390188846-e2a3a97453a0' },
+        { category: 'snacks', name: 'Chicken Pesto Panini', description: 'Grilled chicken, basil pesto, and mozzarella.', price: 310, vegetarian: false, image: 'photo-1525351484163-7529414344d8' },
+        { category: 'snacks', name: 'Crispy Corn & Cheese Toast', description: 'Sweet corn, herbs, and melted cheese on toasted sourdough.', price: 230, vegetarian: true, image: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_300%2Ch_300%2Cc_fit/FOOD_CATALOG/IMAGES/CMS/2025/10/7/ad090da8-190f-44c4-90f0-f6bf6ab48494_6a52f228-e0de-4428-aadc-21dfe27fd8be.jpg' },
+        { category: 'desserts', name: 'Butter Croissant', description: 'Flaky, golden layers baked fresh each morning.', price: 160, vegetarian: true, image: 'photo-1555507036-ab1f4038808a' },
+        { category: 'desserts', name: 'Chocolate Truffle Cake', description: 'Deep cocoa, soft crumb, and a glossy ganache.', price: 220, vegetarian: true, bestseller: true, image: 'photo-1578985545062-69928b1d9587' },
+        { category: 'desserts', name: 'Basque Cheesecake', description: 'Creamy in the middle with a caramelized top.', price: 240, vegetarian: true, image: 'photo-1571115177098-24ec42ed204d' },
+        { category: 'desserts', name: 'Fudgy Brownie', description: 'Dark chocolate, a crackly top, and a soft centre.', price: 170, vegetarian: true, image: 'photo-1606313564200-e75d5e30476c' },
+        { category: 'desserts', name: 'Lemon Tart', description: 'Buttery shell filled with bright, silky lemon curd.', price: 190, vegetarian: true, image: 'photo-1486427944299-d1955d23e34d' },
+        { category: 'desserts', name: 'Gulab Jamun', description: 'Warm, soft khoya dumplings soaked in fragrant cardamom syrup.', price: 150, vegetarian: true, bestseller: true, image: 'photo-1681476747916-8a8fc7e2001e' },
+        { category: 'desserts', name: 'Jalebi', description: 'Crisp golden spirals dipped in saffron-scented sugar syrup.', price: 130, vegetarian: true, image: 'photo-1778448806852-db6a837fa98f' },
+        { category: 'desserts', name: 'Rasmalai', description: 'Soft chenna patties in chilled, saffron-cardamom milk with pistachio.', price: 190, vegetarian: true, image: 'https://imgmedia.lbb.in/media/2020/12/14/AE8E5FA4-FC69-4D84-8FAE-E33655DDCA1E.jpg' },
+        { category: 'chicken', name: 'Crispy Chicken Tenders', description: 'Golden crumb, juicy chicken, and a creamy house dip.', price: 320, vegetarian: false, bestseller: true, image: 'photo-1562967914-608f82629710' },
+        { category: 'chicken', name: 'Peri Peri Chicken Bites', description: 'Tender bites with a gentle chilli kick and lime.', price: 300, vegetarian: false, image: 'photo-1626082927389-6cd097cdc6ec' },
+        { category: 'chicken', name: 'Grilled Chicken Burger', description: 'Grilled chicken, crisp lettuce, and herbed mayo.', price: 340, vegetarian: false, image: 'photo-1606755962773-d324e0a13086' },
+        { category: 'chicken', name: 'Chicken Wings', description: 'Sticky, savory wings with a side of cooling dip.', price: 330, vegetarian: false, image: 'photo-1527477396000-e27163b481c2' },
+        { category: 'chicken', name: 'Chicken Tikka Plate', description: 'Smoky, spice-marinated chicken served with mint chutney and onion.', price: 360, vegetarian: false, bestseller: true, image: 'photo-1652545296882-cf7f118c4df5' },
+        { category: 'chicken', name: 'Creamy Butter Chicken Bowl', description: 'Tender chicken in a mellow tomato and butter sauce with toasted bread.', price: 390, vegetarian: false, image: 'photo-1762922425226-8cfe6987e7b0' },
+        { category: 'chicken', name: 'Crispy Fried Chicken', description: 'Crunchy, golden chicken pieces seasoned with our house spice blend.', price: 340, vegetarian: false, image: 'photo-1548340748-6d2b7d7da280' },
+        { category: 'chicken', name: 'Smoky Chicken Grill', description: 'Grilled chicken with a charred edge, lemon, and fresh herbs.', price: 370, vegetarian: false, image: 'photo-1598103442097-8b74394b95c6' },
+        { category: 'chicken', name: 'Crispy Chicken Sandwich', description: 'A crunchy chicken fillet with pickles, lettuce, and house sauce.', price: 320, vegetarian: false, image: 'photo-1685381918549-6bbc1f2503de' },
+        { category: 'fried', name: 'Rosemary Shoestring Fries', description: 'Crisp fries tossed with rosemary and sea salt.', price: 160, vegetarian: true, image: 'photo-1573080496219-bb080dd4f877' },
+        { category: 'fried', name: 'Crispy Onion Rings', description: 'Sweet onion in a light, crunchy golden coating.', price: 190, vegetarian: true, image: 'photo-1630384060421-cb20d0e0649d' },
+        { category: 'fried', name: 'Mozzarella Sticks', description: 'Stretchy cheese in a crisp crumb with tomato dip.', price: 240, vegetarian: true, image: 'photo-1600891964599-f61ba0e24092' },
+        { category: 'fried', name: 'Chicken Popcorn', description: 'Bite-sized crunchy chicken with a peppery finish.', price: 260, vegetarian: false, image: 'photo-1568901346375-23c9450c58cd' },
+        { category: 'pizza', name: 'Margherita', description: 'Tomato, mozzarella, basil, and a crisp golden crust.', price: 320, vegetarian: true, bestseller: true, image: 'photo-1513104890138-7c749659a591' },
+        { category: 'pizza', name: 'Garden Pesto Pizza', description: 'Basil pesto, roasted vegetables, and mozzarella.', price: 360, vegetarian: true, image: 'photo-1571407970349-bc81e7e96d47' },
+        { category: 'pizza', name: 'Paneer Tikka Pizza', description: 'Spiced paneer, peppers, onion, and a creamy drizzle.', price: 390, vegetarian: true, image: 'photo-1604382355076-af4b0eb60143' },
+        { category: 'pizza', name: 'BBQ Chicken Pizza', description: 'Smoky chicken, sweet onion, and bubbling cheese.', price: 420, vegetarian: false, image: 'photo-1579751626657-72bc17010498' },
+        { category: 'pizza', name: 'Pepperoni Pizza', description: 'Savory pepperoni, mozzarella, and rich tomato sauce.', price: 430, vegetarian: false, image: 'photo-1565299624946-b28f40a0ae38' },
+        { category: 'steam', name: 'Classic Veg Momos', description: 'Delicate steamed dumplings filled with cabbage, carrot, and herbs.', price: 220, vegetarian: true, bestseller: true, image: 'photo-1534422298391-e4f8c172dddb' },
+        { category: 'steam', name: 'Chicken Momos', description: 'Juicy chicken dumplings, steamed and served with spicy red chutney.', price: 260, vegetarian: false, image: 'photo-1523905330026-b8bd1f5f320e' },
+        { category: 'steam', name: 'Paneer & Corn Momos', description: 'Soft dumplings packed with paneer, sweet corn, and a hint of chilli.', price: 250, vegetarian: true, image: 'photo-1762418967889-10abec43c325' },
+        { category: 'steam', name: 'Chicken Soup Dumplings', description: 'Steamed chicken dumplings with a warm, savory broth inside.', price: 290, vegetarian: false, image: 'photo-1775883377015-afe4eef7d8cd' },
+        { category: 'noodles', name: 'Veg Hakka Noodles', description: 'Wok-tossed noodles with crisp vegetables and a light soy-garlic sauce.', price: 250, vegetarian: true, bestseller: true, image: 'photo-1745564372091-38139dd4ac78' },
+        { category: 'noodles', name: 'Chilli Garlic Noodles', description: 'Garlicky noodles with chilli, spring onion, and a bright sesame finish.', price: 260, vegetarian: true, image: 'photo-1543161252-42609aa0e3d2' },
+        { category: 'noodles', name: 'Spicy Meatball Noodles', description: 'Noodles and savory meatballs in a punchy chilli sauce.', price: 310, vegetarian: false, image: 'photo-1774370793603-3c00fd215bb8' },
+        { category: 'noodles', name: 'Miso Mushroom Ramen', description: 'A cozy noodle bowl with mushrooms, greens, and savory miso broth.', price: 330, vegetarian: true, image: 'photo-1769076202211-c105805c43c5' },
+        { category: 'noodles', name: 'Chicken Sesame Noodle Bowl', description: 'Chicken and noodles tossed in sesame sauce with a gentle chilli warmth.', price: 330, vegetarian: false, image: 'photo-1705915892511-489717576b1f' },
+        { category: 'chef', name: 'Abir’s Jaggery Paneer', description: 'A house special: soft paneer in a warm, gently sweet jaggery masala.', price: 320, vegetarian: true, bestseller: true, image: 'photo-1657186618738-9dfbcee196b7' },
+        { category: 'chef', name: 'Mumbai Vada Pav Sliders', description: 'Mini pav with spiced potato vada, garlic chutney, and green chilli.', price: 210, vegetarian: true, image: 'photo-1750767396956-da1796f33ad1' },
+        { category: 'chef', name: 'Nexovetra Paneer Masala', description: 'A rich, creamy paneer curry made for sharing with warm bread.', price: 340, vegetarian: true, image: 'photo-1631452180539-96aca7d48617' },
+        { category: 'chef', name: 'Coastal Thali Platter', description: 'A generous chef’s spread of appam, regional curries, and flavorful sides.', price: 420, vegetarian: true, image: 'photo-1789993496277-33397db03554' }
+      ];
+
+      const sections = document.getElementById('menu-sections');
+      const search = document.getElementById('menu-search');
+      const filterToggle = document.getElementById('filter-toggle');
+      const filterPanel = document.getElementById('filter-panel');
+      const filterClose = document.getElementById('filter-close');
+      const filterActiveDot = document.getElementById('filter-active-dot');
+      const dietaryFilter = document.getElementById('dietary-filter');
+      const bestsellerButton = document.getElementById('bestseller-filter');
+      const priceLimit = document.getElementById('price-limit');
+      const priceLimitLabel = document.getElementById('price-limit-label');
+      const sortMenu = document.getElementById('sort-menu');
+      const applyFiltersButton = document.getElementById('apply-filters');
+      const resetFiltersButton = document.getElementById('reset-filters');
+      const resultCount = document.getElementById('result-count');
+      const noResults = document.getElementById('no-results');
+      let activeCategory = 'all';
+      const appliedFilters = { dietary: 'all', bestseller: false, maxPrice: 500, sort: 'recommended' };
+
+      function makeItemCard(item, index) {
+        const card = document.createElement('article');
+        card.className = 'menu-card group overflow-hidden rounded-2xl border border-[#23392f]/10 bg-white/75 shadow-sm shadow-[#503720]/5 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#503720]/10';
+        card.dataset.category = item.category;
+        card.dataset.vegetarian = String(item.vegetarian);
+        card.dataset.price = String(item.price);
+        card.dataset.bestseller = String(Boolean(item.bestseller));
+        card.dataset.search = `${item.name} ${item.description}`.toLowerCase();
+
+        const media = document.createElement('div');
+        media.className = 'menu-photo relative h-40 bg-[#e8ddcb] sm:h-44';
+        const image = document.createElement('img');
+        image.src = item.image.startsWith('http') ? item.image : `https://images.unsplash.com/${item.image}?auto=format&fit=crop&w=700&q=80`;
+        image.alt = `${item.name}, served at Nexovetra`;
+        image.loading = 'lazy';
+        image.className = 'h-full w-full object-cover';
+        media.append(image);
+
+        if (item.bestseller) {
+          const tag = document.createElement('span');
+          tag.className = 'bestseller-tag absolute left-3 top-3 z-10 rounded-full bg-[#fffaf1]/95 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[.16em] text-[#a44d2c] shadow-sm';
+          tag.textContent = 'Bestseller';
+          media.append(tag);
+        }
+
+        const content = document.createElement('div');
+        content.className = 'p-4 sm:p-5';
+        const titleRow = document.createElement('div');
+        titleRow.className = 'flex items-start justify-between gap-3';
+        const title = document.createElement('h3');
+        title.className = 'font-serif text-xl leading-6 text-[#23392f]';
+        title.textContent = item.name;
+        const price = document.createElement('span');
+        price.className = 'shrink-0 text-sm font-semibold text-[#a44d2c]';
+        price.textContent = `₹${item.price}`;
+        titleRow.append(title, price);
+        const description = document.createElement('p');
+        description.className = 'mt-2 min-h-10 text-xs leading-5 text-[#647168] sm:text-sm';
+        description.textContent = item.description;
+        const tags = document.createElement('div');
+        tags.className = 'mt-4 flex items-center gap-2';
+        const dietary = document.createElement('span');
+        dietary.className = `inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-medium ${item.vegetarian ? 'bg-[#e4eee0] text-[#315b38]' : 'bg-[#f6e5df] text-[#9c452a]'}`;
+        dietary.setAttribute('aria-label', item.vegetarian ? 'Vegetarian' : 'Non-vegetarian');
+        const marker = document.createElement('span');
+        marker.className = `h-2 w-2 rounded-full ${item.vegetarian ? 'bg-[#47734f]' : 'bg-[#b65b34]'}`;
+        marker.setAttribute('aria-hidden', 'true');
+        dietary.append(marker, document.createTextNode(item.vegetarian ? 'Veg · ' + item.category : 'Non-veg · ' + item.category));
+        tags.append(dietary);
+        content.append(titleRow, description, tags);
+        card.append(media, content);
+        return card;
+      }
+
+      function renderMenu() {
+        sections.replaceChildren();
+        categories.forEach((category) => {
+          const section = document.createElement('section');
+          section.className = 'menu-category scroll-mt-24';
+          section.dataset.category = category.id;
+          const heading = document.createElement('div');
+          heading.className = 'mb-5 flex items-end justify-between gap-3';
+          const titleWrap = document.createElement('div');
+          const title = document.createElement('h3');
+          title.className = 'font-serif text-2xl sm:text-3xl';
+          title.textContent = category.title;
+          const note = document.createElement('p');
+          note.className = 'mt-1 text-xs text-[#647168] sm:text-sm';
+          note.textContent = category.note;
+          titleWrap.append(title, note);
+          const icon = document.createElement('span');
+          icon.className = 'hidden h-10 w-10 items-center justify-center rounded-full bg-[#e8ddcb] text-lg text-[#a44d2c] sm:flex';
+          icon.setAttribute('aria-hidden', 'true');
+          icon.textContent = category.emoji;
+          heading.append(titleWrap, icon);
+          const grid = document.createElement('div');
+          grid.className = 'grid gap-4 sm:grid-cols-2 xl:grid-cols-3';
+          const categoryItems = items.filter((item) => item.category === category.id);
+          if (appliedFilters.sort === 'price-low') categoryItems.sort((a, b) => a.price - b.price);
+          if (appliedFilters.sort === 'price-high') categoryItems.sort((a, b) => b.price - a.price);
+          if (appliedFilters.sort === 'name') categoryItems.sort((a, b) => a.name.localeCompare(b.name));
+          categoryItems.forEach((item, index) => grid.append(makeItemCard(item, index)));
+          section.append(heading, grid);
+          sections.append(section);
+        });
+        applyFilters();
+      }
+
+      function applyFilters() {
+        const query = search.value.trim().toLowerCase();
+        let visibleItems = 0;
+        document.querySelectorAll('.menu-category').forEach((section) => {
+          const categoryMatches = activeCategory === 'all' || section.dataset.category === activeCategory;
+          let sectionItems = 0;
+          section.querySelectorAll('article').forEach((card) => {
+            const price = Number(card.dataset.price);
+            const isBestseller = card.dataset.bestseller === 'true';
+            const dietaryMatches = appliedFilters.dietary === 'all' || (appliedFilters.dietary === 'veg' && card.dataset.vegetarian === 'true') || (appliedFilters.dietary === 'nonveg' && card.dataset.vegetarian === 'false');
+            const matches = categoryMatches && card.dataset.search.includes(query) && dietaryMatches && price <= appliedFilters.maxPrice && (!appliedFilters.bestseller || isBestseller);
+            card.classList.toggle('hidden', !matches);
+            if (matches) sectionItems += 1;
+          });
+          section.classList.toggle('hidden', sectionItems === 0);
+          visibleItems += sectionItems;
+        });
+        const filtersAreDefault = appliedFilters.dietary === 'all' && !appliedFilters.bestseller && appliedFilters.maxPrice === 500;
+        resultCount.textContent = `${visibleItems} ${visibleItems === 1 ? 'item' : 'items'}${activeCategory === 'all' && !query && filtersAreDefault ? ' on the menu' : ' found'}`;
+        noResults.classList.toggle('hidden', visibleItems !== 0);
+        filterActiveDot.classList.toggle('hidden', filtersAreDefault && appliedFilters.sort === 'recommended');
+      }
+
+      document.querySelectorAll('.category-chip').forEach((button) => {
+        button.addEventListener('click', () => {
+          activeCategory = button.dataset.filter;
+          document.querySelectorAll('.category-chip').forEach((chip) => {
+            chip.setAttribute('aria-pressed', String(chip === button));
+          });
+          applyFilters();
+        });
+      });
+      search.addEventListener('input', applyFilters);
+      priceLimit.addEventListener('input', () => {
+        priceLimitLabel.textContent = `₹${priceLimit.value}`;
+      });
+      function setFilterPanelOpen(isOpen) {
+        filterPanel.classList.toggle('hidden', !isOpen);
+        filterToggle.setAttribute('aria-expanded', String(isOpen));
+        filterToggle.setAttribute('aria-label', isOpen ? 'Close menu filters' : 'Open menu filters');
+      }
+      filterToggle.addEventListener('click', () => setFilterPanelOpen(filterPanel.classList.contains('hidden')));
+      filterClose.addEventListener('click', () => setFilterPanelOpen(false));
+      document.addEventListener('click', (event) => {
+        if (!filterPanel.classList.contains('hidden') && !filterPanel.contains(event.target) && !filterToggle.contains(event.target)) setFilterPanelOpen(false);
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !filterPanel.classList.contains('hidden')) setFilterPanelOpen(false);
+      });
+      applyFiltersButton.addEventListener('click', () => {
+        appliedFilters.dietary = dietaryFilter.value;
+        appliedFilters.bestseller = bestsellerButton.checked;
+        appliedFilters.maxPrice = Number(priceLimit.value);
+        appliedFilters.sort = sortMenu.value;
+        renderMenu();
+        setFilterPanelOpen(false);
+      });
+      resetFiltersButton.addEventListener('click', () => {
+        dietaryFilter.value = 'all';
+        bestsellerButton.checked = false;
+        priceLimit.value = '500';
+        priceLimitLabel.textContent = '₹500';
+        sortMenu.value = 'recommended';
+        appliedFilters.dietary = 'all';
+        appliedFilters.bestseller = false;
+        appliedFilters.maxPrice = 500;
+        appliedFilters.sort = 'recommended';
+        renderMenu();
+      });
+      document.getElementById('clear-search').addEventListener('click', () => {
+        search.value = '';
+        dietaryFilter.value = 'all';
+        bestsellerButton.checked = false;
+        priceLimit.value = '500';
+        priceLimitLabel.textContent = '₹500';
+        sortMenu.value = 'recommended';
+        appliedFilters.dietary = 'all';
+        appliedFilters.bestseller = false;
+        appliedFilters.maxPrice = 500;
+        appliedFilters.sort = 'recommended';
+        activeCategory = 'all';
+        setFilterPanelOpen(false);
+        document.querySelector('[data-filter="all"]').click();
+        search.focus();
+      });
+
+      renderMenu();
+    </script>
+  </body>
+</html>
